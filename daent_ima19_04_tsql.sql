@@ -165,13 +165,30 @@
 --AUSKLAPPEN--
 
     -- Trigger 1
-    -- Kurzbeschreibung: XXXXXXXXXX
-    
-
+    -- Kurzbeschreibung: Status übergang des tickets nur aufsteigend!
+    CREATE OR ALTER TRIGGER dbo.ticketStatus_upd
+        ON dbo.ticket
+        FOR UPDATE
+        AS
+        BEGIN
+            SET NOCOUNT ON;
+            IF UPDATE(status)
+            BEGIN
+                IF (SELECT COUNT(*) 
+                    FROM inserted i
+                    INNER JOIN deleted d ON i.status = d.status
+                    WHERE i.status < d.status) > 0
+                BEGIN
+                    ROLLBACK;
+                    THROW 50088, 'Ungültiger Statusübergang',1;
+                END
+            END
+    END
+    GO
 
     -- Testaufrufe
     -- Variante 1 mit Ergebnis AB
-
+SELECT * FROM ticket
     -- Variante 2 mit Ergebnis CD
     -- ...
 
@@ -266,7 +283,7 @@ CREATE OR ALTER PROCEDURE dbo.sp_createTicket
 GO
 -- Testaufrufe
 
-EXEC dbo.sp_createTicket 'Test5','Ich habe ein Problem mit meiner Website!',44,@category = 4, @select = 1;
+EXEC dbo.sp_createTicket 'Website Problem','Ich habe ein Problem mit meiner Website!',2,@category = 4, @select = 1;
 
 -- Variante 1 mit Ergebnis AB
 
