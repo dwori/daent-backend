@@ -13,6 +13,7 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
         --Variablen
             
         BEGIN TRY
+        Begin TRANSACTION;
         --Wenn Ticket ID existiert führe code aus
         IF (SELECT COUNT(*) FROM dbo.ticket WHERE id = @ticket_id) = 1
         BEGIN
@@ -31,7 +32,10 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
             END
         END
         ELSE 
+        BEGIN;
             THROW 50001, 'No id found',1;
+        END
+        COMMIT;
         END TRY
         BEGIN CATCH
             SET @errorLine = ERROR_LINE()
@@ -42,6 +46,7 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
                 SET @errorCode = -2
             ELSE
                 SET @errorCode = -99
+            ROLLBACK;
         END CATCH
         IF @select = 1
             SELECT @errorCode AS resultCode, @errorMsg AS errorMessage, @errorLine AS errorLine
