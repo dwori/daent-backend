@@ -1,0 +1,60 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="AE1351A9-3AD1-67D3-13C2-1FE4213B8320" name="categories_staff">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-11-17 13:59:39 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="C67687CB-DC21-22BE-10C6-A44C3FFE1DC1" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="tc_id" id="9D06F28E-AAD2-7555-2A1F-C08526ADF811">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-11-17 14:01:55 UTC</createdTime>
+<generatorID>51F7AF92-B618-AC71-E888-B20BEB5574BA</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="C67687CB-DC21-22BE-10C6-A44C3FFE1DC1" value="true"/>
+</engineerTo>
+<referedAttribute>4F31EA7C-CCF9-D55A-6366-A3A75A309BAE</referedAttribute>
+<use>1</use>
+<logicalDatatype>LOGDT042</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="st_id" id="CFD904E9-62C4-F336-E4BB-5C30500D02CC">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-11-17 14:02:01 UTC</createdTime>
+<generatorID>9D2C9DBF-34A4-DBDD-50F1-27AC4145AABF</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="C67687CB-DC21-22BE-10C6-A44C3FFE1DC1" value="true"/>
+</engineerTo>
+<referedAttribute>D953D901-03A0-3D24-5D9F-BE6D944D7341</referedAttribute>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A4D51306-1611-0649-0E09-92F006296932" name="ticket_categories_users PK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-11-17 14:00:28 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="C67687CB-DC21-22BE-10C6-A44C3FFE1DC1" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9D06F28E-AAD2-7555-2A1F-C08526ADF811</attributeRef>
+<attributeRef>CFD904E9-62C4-F336-E4BB-5C30500D02CC</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

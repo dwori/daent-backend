@@ -37,7 +37,7 @@ CREATE TABLE customers (
     phone VARCHAR(255),
     last_login datetime2(0),
     created_at datetime2(0) CONSTRAINT DF_customer_created_at DEFAULT SYSDATETIME(),
-    failed_logins tinyint NOT NULL CONSTRAINT DF_customer_failed_logins DEFAULT 0
+    failed_logins tinyint NOT NULL CONSTRAINT DF_customer_failed_logins DEFAULT 0,
     CONSTRAINT PK_customers PRIMARY KEY (id),
     CONSTRAINT FK_customers_salutations FOREIGN KEY(salutation) REFERENCES salutations(id),
     CONSTRAINT UK_customers_username UNIQUE (username),
@@ -72,7 +72,7 @@ CREATE TABLE staff (
     phone VARCHAR(255),
     last_login datetime2(0),
     created_at datetime2(0) CONSTRAINT DF_staff_created_at DEFAULT SYSDATETIME(),
-    failed_logins tinyint NOT NULL CONSTRAINT DF_staff_failed_logins DEFAULT 0
+    failed_logins tinyint NOT NULL CONSTRAINT DF_staff_failed_logins DEFAULT 0,
     CONSTRAINT PK_staff PRIMARY KEY (id),
     CONSTRAINT FK_staff_salutations FOREIGN KEY(salutation) REFERENCES salutations (id),
     CONSTRAINT UK_staff_username UNIQUE (username),

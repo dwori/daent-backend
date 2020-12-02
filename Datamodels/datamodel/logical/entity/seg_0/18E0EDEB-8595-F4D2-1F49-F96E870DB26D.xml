@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="18E0EDEB-8595-F4D2-1F49-F96E870DB26D" name="customer_addresses">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-02 20:10:52 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ship_bill_boolean" id="39EF2062-7A6F-200C-DB16-4E918AB566BF">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-02 20:12:11 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT034</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="a_id" id="FEB777D8-77F5-B1A2-DFCE-57829FB1B693">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-02 20:13:22 UTC</createdTime>
+<generatorID>E85A745E-3FA2-19A2-1999-BF5275993743</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+</engineerTo>
+<referedAttribute>5B188614-06EE-4740-0CDD-3411FEA2DED6</referedAttribute>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="c_id" id="ADC86022-83BF-5C74-C5EE-F5908CC5FFFC">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-02 21:13:15 UTC</createdTime>
+<generatorID>A40D32AF-3B1F-58BC-739B-CE5919057860</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+</engineerTo>
+<referedAttribute>6C02C988-2915-8D43-37F4-7407B21CC2FE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="0AC19648-82E5-B4AA-CC17-4701FE419F9D" name="customer_addresses PK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-02 20:13:22 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>FEB777D8-77F5-B1A2-DFCE-57829FB1B693</attributeRef>
+<attributeRef>ADC86022-83BF-5C74-C5EE-F5908CC5FFFC</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2F839B61-8A6D-A5AD-A21B-AB0FD7235060" name="categories">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:26:09 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="tc_id" id="4F31EA7C-CCF9-D55A-6366-A3A75A309BAE">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:26:27 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT042</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="97BB735E-FBAE-1CC5-10BF-EAD2C4C7EE02">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-02 19:51:51 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="6D72407F-6CC1-C36F-2B12-DAB2874B887F" name="ticket_categories PK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:26:42 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4F31EA7C-CCF9-D55A-6366-A3A75A309BAE</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

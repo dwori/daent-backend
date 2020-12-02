@@ -1,0 +1,213 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="52A1DA97-481B-CD6D-51A7-1BF3A6D48F65" name="staff">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:17:10 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="st_id" id="D953D901-03A0-3D24-5D9F-BE6D944D7341">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:18:39 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="username" id="F2163692-307A-1208-56A5-FA0EFA91AFCC">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-11-17 14:28:09 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>60 CHAR</dataTypeSize>
+<ownDataTypeParameters>60 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="passwordhash" id="5B83868F-E7F3-51E2-8325-0B9F5FBE025A">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-02 21:00:54 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128 BYTE</dataTypeSize>
+<ownDataTypeParameters>128 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ticket_queue" id="D96D30D1-8193-F17C-C70C-B4532AE0DB57">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 13:18:11 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="finished_tickets" id="49D0C7D4-9FAD-80AB-8126-3842B1379453">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-11-17 15:32:55 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lastname" id="C70BC47C-94D6-A720-E0D5-F671730E1E5A">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:55:55 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="firstname" id="657D7895-99E5-C6A0-2A1F-5076F408AA9F">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:18:43 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="email" id="AD1059DD-F2AD-DA05-8CCF-9D992E3C90F9">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:42:26 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 CHAR</dataTypeSize>
+<ownDataTypeParameters>200 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="phone" id="19595928-3124-24E6-7BD6-99A433856A73">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:42:23 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="last_login" id="FA1A5825-C774-D66E-5F19-F91CB3809465">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-02 20:32:57 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="created_at" id="C4BB0FBE-F6E7-5292-40D9-1B26B5782493">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-02 20:33:02 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="failed_logins" id="9F582774-63FC-CC4E-836D-972CE00A7C2B">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-02 20:33:12 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT042</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="a_id" id="BB7A0156-BA59-C1AB-33D7-06E91CA5BDB1">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-02 20:42:01 UTC</createdTime>
+<generatorID>CEDF2F38-D822-D6FD-EB15-3903B307B3A8</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<referedAttribute>5B188614-06EE-4740-0CDD-3411FEA2DED6</referedAttribute>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="s_id" directorySegmentName="seg_0" id="68698E2E-B55D-795E-1BCB-43E1EB17F61E">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-02 20:53:44 UTC</createdTime>
+<generatorID>8797B980-71F2-418C-C585-F2FF57B22F14</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<referedAttribute>EFCC13B6-CF92-B179-C03B-ACB9EEFB36E3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT042</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C498B6B5-B691-E572-EC93-49231CCF49AB" name="staff PK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:18:48 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="F446B778-899B-208F-7308-F6F4BA2889EF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D953D901-03A0-3D24-5D9F-BE6D944D7341</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
