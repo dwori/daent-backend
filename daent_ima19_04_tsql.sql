@@ -291,7 +291,7 @@ EXEC dbo.sp_createTicket 'Website Problem','Ich habe ein Problem mit meiner Webs
 -- ...
 
 
-EXEC dbo.sp_CreateUser 'dwori420','hdjkahjkhdjkah!','dsad','dasdad',1,'dasd', 'dasda','dsad','323423',@select = 1;
+
 -- Reset
 
 
