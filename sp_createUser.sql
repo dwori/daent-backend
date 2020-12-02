@@ -13,7 +13,7 @@ CREATE OR ALTER PROCEDURE sp_createUser
   @phone VARCHAR(255),
   @agent bit = 0,
   
-  --Error Handeling
+  --Error Handeling ;)
   @errorCode int = NULL OUTPUT,  -- USER ID is returned if procedures gets executed without error
   @errorLine int = NULL OUTPUT,
   @errorMsg VARCHAR(500) = NULL OUTPUT,
