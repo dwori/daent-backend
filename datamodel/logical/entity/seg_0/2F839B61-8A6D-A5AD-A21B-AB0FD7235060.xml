@@ -1,0 +1,41 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2F839B61-8A6D-A5AD-A21B-AB0FD7235060" name="ticket_categories">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:26:09 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ticket_category_id" id="4F31EA7C-CCF9-D55A-6366-A3A75A309BAE">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:26:27 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="D2A81B40-3A46-4D54-9766-B6B4C4E7C5E0">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:26:44 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="6D72407F-6CC1-C36F-2B12-DAB2874B887F" name="ticket_categories PK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:26:42 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4F31EA7C-CCF9-D55A-6366-A3A75A309BAE</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

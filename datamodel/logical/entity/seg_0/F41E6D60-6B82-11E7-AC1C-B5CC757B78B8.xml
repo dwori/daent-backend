@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F41E6D60-6B82-11E7-AC1C-B5CC757B78B8" name="customers">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:17:22 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="customer_id" id="6C02C988-2915-8D43-37F4-7407B21CC2FE">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:22:37 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="username" id="F3AE2C55-A3FF-1C77-9675-233D15E4B88E">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-11-17 14:16:03 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lastname" id="68B7CF8F-CEC2-6187-CE87-6A6A1E390E09">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:55:30 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="firstname" id="C1CF5933-7F32-446A-8BF8-8E029F559D24">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:22:42 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="billing address" id="4129350D-A056-06A8-F434-5AC36B71B62C">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:31:49 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="shipping address" id="46840D7D-0A1C-D692-C4E2-AECE01EB3DE5">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:37:38 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="email" id="F207822F-2FB0-E9B9-30B5-E6B32336E5BB">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:36:08 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="phone" id="A04A00E0-8908-24EE-97F1-BC9D581C733B">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:36:22 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="salutation_id" id="88154B66-8557-5DBD-733A-5F5B06CAB5DB">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:41:47 UTC</createdTime>
+<generatorID>9A523851-0354-85B3-729A-4E4B49D11FA5</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<referedAttribute>EFCC13B6-CF92-B179-C03B-ACB9EEFB36E3</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="9C111E70-BDF5-C47D-3F66-44AAC96F6A57" name="customers PK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:22:41 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6C02C988-2915-8D43-37F4-7407B21CC2FE</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

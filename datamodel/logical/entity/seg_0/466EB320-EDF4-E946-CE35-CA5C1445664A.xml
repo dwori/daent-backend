@@ -1,0 +1,41 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="466EB320-EDF4-E946-CE35-CA5C1445664A" name="salutation">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:40:32 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="salutation_id" id="EFCC13B6-CF92-B179-C03B-ACB9EEFB36E3">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:41:19 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="1BD01ABA-67B6-5182-CF6E-E7E21F1F86FE">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:41:30 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="6B5E546B-EA91-D7DA-1FFC-240F2FF67EFD" name="salutation PK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-10-27 12:41:29 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>EFCC13B6-CF92-B179-C03B-ACB9EEFB36E3</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
