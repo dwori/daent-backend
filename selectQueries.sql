@@ -1,0 +1,65 @@
+
+-- customers join select
+select 
+c.id as customer_id,
+username,
+passwordhash,
+firstname,
+lastname,
+s.name as salutation,
+billing_address,
+shipping_address,
+email,
+phone,
+last_login,
+created_at,
+failed_logins
+from customers c
+inner join salutations s on c.salutation = s.id
+
+
+
+
+-- select * from staff
+select 
+st.id as staff_id,
+username,
+passwordhash,
+ticket_queue,
+finished_tickets,
+firstname,
+lastname,
+s.name as salutation,
+address,
+email,
+phone,
+last_login,
+created_at,
+failed_logins
+from staff st
+inner join salutations s on st.salutation = s.id
+
+
+
+
+
+-- ticket join select
+select t.id,
+t.subject,
+t.ticket_content,
+st.firstname + ' ' + st.lastname as Agent,
+tc.name as Category,
+tp.name as Priority,
+ts.name as Status,
+customer_number as customer_id,
+s.name as salutation,
+c.firstname,
+c.lastname,
+t.created_at
+from ticket t
+inner join staff st on t.agent = st.id
+inner join customers c on t.customer_number = c.id
+inner join salutations s on c.salutation = s.id
+inner join ticket_categories tc on t.category = tc.id
+inner join ticket_priorities tp on t.priority = tp.id
+inner join ticket_statuses ts on t.status = ts.id
