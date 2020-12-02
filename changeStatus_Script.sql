@@ -13,7 +13,7 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
         --Variablen
             
         BEGIN TRY
-
+        --Wenn Ticket ID existiert führe code aus
         IF (SELECT COUNT(*) FROM dbo.ticket WHERE id = @ticket_id) = 1
         BEGIN
             IF ERROR_MESSAGE() IS NULL
