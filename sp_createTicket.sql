@@ -22,6 +22,8 @@ CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
         DECLARE @agent INT
 
         BEGIN TRY
+            IF (SELECT COUNT(*) FROM dbo.ticket_categories WHERE id = @category) = 0
+                THROW 50004, 'category wrong', 1;
             --Den Agenten mit der geringsten ticket_queue ermitteln und @agent hizufügen
             SET @agent = (SELECT TOP 1 id FROM dbo.staff WHERE id IN(SELECT sid FROM dbo.ticket_categories_staff WHERE tcid = @category)
             ORDER BY ticket_queue ASC)
@@ -44,8 +46,6 @@ CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
             SET @errorLine = ERROR_LINE()
             SET @errorMsg = ERROR_MESSAGE()
             IF ERROR_MESSAGE() like '%FK_ticket_customer%'
-                SET @errorCode = -2
-            ELSE IF ERROR_MESSAGE() like '%FK_ticket_categories%'
                 SET @errorCode = -1
             ELSE
                 SET @errorCode = -99
@@ -55,3 +55,8 @@ CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
             SELECT @errorCode AS resultCode, @errorMsg AS errorMessage, @errorLine AS errorLine
     END
 GO
+
+INSERT INTO dbo.ticket_categories_staff (sid,tcid) VALUES (1,4)
+
+
+EXECUTE sp_createTicket 'My first Problem','olls oasch', 1, @category = 56, @select = 1
