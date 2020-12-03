@@ -1,0 +1,191 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="07C98B69-4A45-AA16-BF4D-95DC45A7A5EB" name="customers">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>F41E6D60-6B82-11E7-AC1C-B5CC757B78B8</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="c_id" id="9B62A556-6E81-772A-6570-8083F8F07211">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>6C02C988-2915-8D43-37F4-7407B21CC2FE</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="username" id="211BD6F7-88B3-7C20-5803-3FE13227BF23">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>F3AE2C55-A3FF-1C77-9675-233D15E4B88E</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="passwordhash" id="BCC81032-4F97-9BFD-3DC9-288898639F52">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>BDD20A74-204D-5868-D547-A822A16F76A1</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128 BYTE</dataTypeSize>
+<ownDataTypeParameters>128 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="lastname" id="8C4CE4E9-A2B4-63E3-57E1-8E4F67761440">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>68B7CF8F-CEC2-6187-CE87-6A6A1E390E09</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="firstname" id="A2C69905-D66F-33C1-C9F6-DE2E40309A6E">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>C1CF5933-7F32-446A-8BF8-8E029F559D24</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="billing_address" id="D6769766-EC82-D472-60E1-5F751D4D2C13">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>4129350D-A056-06A8-F434-5AC36B71B62C</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<deprecated>true</deprecated>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="shipping_address" id="E8DADBFA-683C-2141-59E8-B594DDC60789">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>46840D7D-0A1C-D692-C4E2-AECE01EB3DE5</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<deprecated>true</deprecated>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="CE8202A7-6BD5-EE2A-DC2B-B66678C239AA">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>F207822F-2FB0-E9B9-30B5-E6B32336E5BB</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>150 CHAR</dataTypeSize>
+<ownDataTypeParameters>150 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="phone" id="F6E44847-F2CC-CBED-1157-5C94305AA3C8">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>A04A00E0-8908-24EE-97F1-BC9D581C733B</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="last_login" id="2B95F6E4-78C6-3A92-8E02-4F006195BF35">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>203C01CE-827D-EA50-6221-022721492776</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="created_at" id="B8346DBC-C35E-EF13-56D7-FAC0FE2059C9">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>4C7909AD-798A-C400-A3E7-6429527EEDFF</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="failed_logins" id="40649968-2505-90EE-2DE7-818C3BD477ED">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>F2AF85D5-BBCB-F1C3-B056-95C338D31933</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="salutation_s_id" id="51CE7998-1D94-308A-22BA-FD52CE432980">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>A5C32F67-6FB9-9671-758A-F36CE1E6F9A1</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT042</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FED8FF3D-FC5B-CA4A-3C7B-9E0AB23999A9" referredColumn="526F247F-15CA-225D-0F5C-EC2CEB87B149"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2150309A-0BDB-BD96-9FB1-34BBA9174457" name="customers_PK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>9C111E70-BDF5-C47D-3F66-44AAC96F6A57</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9B62A556-6E81-772A-6570-8083F8F07211"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="666514A2-5C78-97C5-2865-79E5FE3CEA44" name="customers_salutation_FK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:55:23 UTC</createdTime>
+<generatorID>9A523851-0354-85B3-729A-4E4B49D11FA5</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="51CE7998-1D94-308A-22BA-FD52CE432980"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
