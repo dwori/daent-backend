@@ -4,7 +4,7 @@
 <createdTime>2020-12-02 19:46:33 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -20,7 +20,7 @@
 <createdTime>2020-12-02 19:46:40 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -32,20 +32,20 @@
 <createdTime>2020-12-02 19:47:09 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>200</dataTypeSize>
-<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<dataTypeSize>80 CHAR</dataTypeSize>
+<ownDataTypeParameters>80 CHAR,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="postalcode" id="EDB8922B-C092-AA07-C7D7-96FAB022696E">
 <createdBy>AK-47u</createdBy>
 <createdTime>2020-12-02 19:47:55 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -57,20 +57,20 @@
 <createdTime>2020-12-02 19:48:57 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>200</dataTypeSize>
-<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<dataTypeSize>80 CHAR</dataTypeSize>
+<ownDataTypeParameters>80 CHAR,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="country" id="DAB64766-4B03-AE70-BE0A-2F370F4BAAA2">
 <createdBy>AK-47u</createdBy>
 <createdTime>2020-12-02 19:49:04 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -82,7 +82,7 @@
 <createdTime>2020-12-02 19:49:10 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
 </engineerTo>
 <deprecated>true</deprecated>
 <useDomainConstraints>false</useDomainConstraints>
@@ -97,14 +97,14 @@
 <generatorID>448846A8-C75D-466C-4920-B4A326F53541</generatorID>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
 </engineerTo>
 <referedAttribute>FBCCA0BE-2F96-F90B-B8CE-0310E3BCF60F</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>2 CHAR</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>2 CHAR,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -112,9 +112,8 @@
 <createdBy>AK-47u</createdBy>
 <createdTime>2020-12-02 19:47:03 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
-<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="false"/>
+<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

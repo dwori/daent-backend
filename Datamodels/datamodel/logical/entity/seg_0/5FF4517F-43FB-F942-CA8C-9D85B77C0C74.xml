@@ -4,7 +4,7 @@
 <createdTime>2020-10-27 12:14:55 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -20,7 +20,7 @@
 <createdTime>2020-10-27 12:15:12 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -32,13 +32,13 @@
 <createdTime>2020-10-27 12:15:44 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="true"/>
+<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -46,9 +46,8 @@
 <createdBy>AK-47u</createdBy>
 <createdTime>2020-10-27 12:15:39 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
-<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="A71148C0-724C-9DBA-4921-213707EE9668" value="false"/>
+<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

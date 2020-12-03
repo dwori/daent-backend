@@ -1,0 +1,123 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4144BF50-1F4B-E237-59B0-16739177EFE6" name="adresses">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>049F93BE-00C8-AC53-71E2-C7AADF566172</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="a_id" id="2836D37A-9120-9A76-28E2-E9F417095FF4">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>5B188614-06EE-4740-0CDD-3411FEA2DED6</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="streetname" id="67EE62A0-E728-4B73-F401-0BE09FAC5A22">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>F6D9C247-969E-0664-D05D-78E378DE4CB7</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>80 CHAR</dataTypeSize>
+<ownDataTypeParameters>80 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="postalcode" id="A152F506-0D4B-214B-3764-21FF1FB4D726">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>EDB8922B-C092-AA07-C7D7-96FAB022696E</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cityname" id="9A92FFA3-7FDB-AC41-5AC8-DF43093E334F">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>D6E9DB92-A856-8F03-0A93-E1BCB7E424C9</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>80 CHAR</dataTypeSize>
+<ownDataTypeParameters>80 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="country" id="4A2DF950-BB5D-78CE-3D06-502EE0B8DF42">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>DAB64766-4B03-AE70-BE0A-2F370F4BAAA2</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ship_bill_boolean" id="A2034A25-D474-CFAF-C8A7-CCC4E181C834">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>1363F53D-C99E-FA09-DF26-5C0030EC8740</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<deprecated>true</deprecated>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT034</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="countries_iso" id="C2505F89-4E18-17F9-6C51-B9ABDE7D542A">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>D9405293-053A-5EC2-311E-E5D26B4AAA25</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="13D8BCDA-CBF9-8F78-4AC1-ECBCB13E8245" referredColumn="B116F64C-5276-2D9E-60A9-6B7B851EBE7A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E02A704B-3A1C-4D37-DB89-7097539DB3E2" name="adresses_PK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>368604BF-B6A8-2461-9CC6-3D8BF691FB9F</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2836D37A-9120-9A76-28E2-E9F417095FF4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9BBAA660-6E2E-2F43-94CD-B8074362E458" name="adresses_countries_FK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>448846A8-C75D-466C-4920-B4A326F53541</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C2505F89-4E18-17F9-6C51-B9ABDE7D542A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

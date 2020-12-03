@@ -1,0 +1,79 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="86FEE843-2388-01A2-400C-EDF8C2B65B61" name="categories_staff">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>AE1351A9-3AD1-67D3-13C2-1FE4213B8320</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="categories_tc_id" id="E3114F18-0AFE-E435-0B0E-9D6FA2E11B93">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>9D06F28E-AAD2-7555-2A1F-C08526ADF811</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT042</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="02073F51-FD54-7175-4604-02C2BE8555AE" referredColumn="023019E2-F31E-1DAC-994F-DE668E7DC7F5"/>
+</associations>
+</Column>
+<Column name="staff_st_id" id="999DC34E-81AF-FDFF-4521-72BC70CBAFB7">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>CFD904E9-62C4-F336-E4BB-5C30500D02CC</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="320BF058-4D62-9067-F058-3F2D638CC15F" referredColumn="94EFCE92-F4EA-DD8D-C7DD-A2A9A88AC5AB"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="26DBF805-8A2B-C8E9-72A0-8F3667F2C7EC" name="categories_staff_PK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>A4D51306-1611-0649-0E09-92F006296932</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E3114F18-0AFE-E435-0B0E-9D6FA2E11B93"/>
+<colUsage columnID="999DC34E-81AF-FDFF-4521-72BC70CBAFB7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="241E1203-0563-DC65-D441-F8B22641EE69" name="categories_staff_categories_FK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>51F7AF92-B618-AC71-E888-B20BEB5574BA</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E3114F18-0AFE-E435-0B0E-9D6FA2E11B93"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="56B50592-83D3-3687-5323-BE33C0DF84E4" name="categories_staff_staff_FK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>9D2C9DBF-34A4-DBDD-50F1-27AC4145AABF</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="999DC34E-81AF-FDFF-4521-72BC70CBAFB7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

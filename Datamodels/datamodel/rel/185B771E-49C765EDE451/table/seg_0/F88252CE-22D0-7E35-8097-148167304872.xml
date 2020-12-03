@@ -1,0 +1,239 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F88252CE-22D0-7E35-8097-148167304872" name="ticket">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>29F2C94F-EEBB-18F8-0A1B-3E77A02F3948</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="t_id" id="670B2159-6231-B299-626B-62F116BAA440">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>C6056D19-318E-3070-36A3-B43400449E52</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="subject" id="A5ECC0F9-C2DA-949B-EC3D-819E5113ECCC">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>2C76F3F5-FA5E-07CF-B7CE-D107AF2CFB6C</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ticket_content" id="8F01862B-27CE-9504-5C9D-C6B064617960">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>8FB8FBCA-0D76-52A0-CED3-E8FBDE5484DB</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customers_c_id" id="8494E66D-DEC2-1500-9D86-50220DF0EE5A">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>0B4382FE-D786-6497-4D6F-9145B7C26799</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="86C6E97E-88F0-5D2F-E77F-7E6E1DDB2FEC" referredColumn="D7F4F5B4-1056-7055-8935-3C3A7AB95831"/>
+</associations>
+</Column>
+<Column name="staff_st_id" id="CD0B5ABA-5014-69D9-397E-441D3A5EED6C">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>5F556747-DAF3-9D7A-CB50-C30173F6C517</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A17BD5DA-D89E-6FAB-E0C6-9F7421014F9F" referredColumn="94EFCE92-F4EA-DD8D-C7DD-A2A9A88AC5AB"/>
+</associations>
+</Column>
+<Column name="categories_tc_id" id="32BDD19D-6ACE-C261-4F59-E38751DFDB12">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>07666CB9-002E-F2E1-D376-1BC11092AEDD</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT042</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="504CD796-FB50-9DDF-CECE-6962B7B586B0" referredColumn="023019E2-F31E-1DAC-994F-DE668E7DC7F5"/>
+</associations>
+</Column>
+<Column name="created_at" id="E9401395-3A43-72DA-5D0A-61BCCF01AD61">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>02488632-B15E-292B-0B00-4611DDB9E96E</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="updated_at" id="1C312BF6-0270-51E7-F4E0-360F9F740047">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>CEA747D1-162E-F0B7-489C-B925E2FCCC11</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="completed_at" id="36B7FD6B-BD5E-E470-272E-E2A3CD2E83CF">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>91BD9A0F-34F0-C584-8D77-6198D42782D0</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="duration" id="CAADA514-9B5A-295B-FCEB-497934B11E96">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>A92D32FF-47FB-95E1-468D-14EE5ED94260</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="statuses_ts_id" id="49934A11-F036-D84F-CFE0-5E200DEA0C5C">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>2A114FAB-D1F0-0CD0-2A10-7EB4F00DB80D</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT042</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3C04485B-3958-46D0-4737-7D768851B059" referredColumn="1356DD49-AF72-4413-A8D0-2476C1BB83DA"/>
+</associations>
+</Column>
+<Column name="priorities_tp_id" id="3DB6DB2E-0412-7889-0F8B-C770A4456D5A">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>DBE570BE-2651-A0B1-BE2B-89ABF7030920</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT042</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E404BDBD-6D4B-333A-860B-D1D591BA33D9" referredColumn="1603F1C1-7174-5B22-48EC-1C44BE686644"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="32005D15-C2D2-D6AC-120D-5E57BCE9EBD5" name="ticket_PK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>57049B5B-BA68-30CB-61FC-AF7CF4618ABE</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="670B2159-6231-B299-626B-62F116BAA440"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DD9D41B0-5E2C-CF30-CE31-846E2233940C" name="ticket_priorities_FK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:38 UTC</createdTime>
+<generatorID>342900ED-2801-85E7-DE18-9B76966E3C1C</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3DB6DB2E-0412-7889-0F8B-C770A4456D5A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5D4EEF80-87D2-6AFB-24AB-79468A11BF4D" name="ticket_statuses_FK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:39 UTC</createdTime>
+<generatorID>4CCB40A3-4199-41FB-E297-3429BF63341F</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="49934A11-F036-D84F-CFE0-5E200DEA0C5C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AEF117BF-A43C-062B-8545-3D2E4B0B66F1" name="ticket_customers_FK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:39 UTC</createdTime>
+<generatorID>C1D92F30-B3B5-9F5D-8C13-55D0CDBAE152</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8494E66D-DEC2-1500-9D86-50220DF0EE5A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="73347A13-4F70-777B-CF1D-08BBB541D227" name="ticket_staff_FK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:39 UTC</createdTime>
+<generatorID>212A16A2-BE54-13C9-2574-0D62D0D45E54</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CD0B5ABA-5014-69D9-397E-441D3A5EED6C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FFE2130B-8E38-255A-D261-B77A77C5ADDE" name="ticket_categories_FK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2020-12-03 10:42:39 UTC</createdTime>
+<generatorID>5F946A39-13E2-7986-18A2-85405B58D992</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="32BDD19D-6ACE-C261-4F59-E38751DFDB12"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
