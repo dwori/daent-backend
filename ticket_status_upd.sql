@@ -5,14 +5,19 @@ AFTER update
 AS
 BEGIN
 	SET NOCOUNT ON;
-	
-    IF UPDATE(status)
+    IF UPDATE(status)  
         BEGIN 
-            PRINT 'jetzt'
             UPDATE dbo.ticket
             SET updated_at = SYSDATETIME()
-            WHERE id IN(SELECT DISTINCT ID FROM Inserted)  
+            WHERE id IN(SELECT DISTINCT ID FROM Inserted) AND status != 3
         END 
+    IF UPDATE(status)   
+        BEGIN 
+            UPDATE dbo.ticket
+            SET completed_at = SYSDATETIME()
+            WHERE id IN(SELECT DISTINCT ID FROM Inserted) AND status = 3
+        END 
+    
 END;
 
 
@@ -20,7 +25,7 @@ END;
 SELECT * FROM dbo.ticket
 
 UPDATE dbo.ticket
-SET status = 2
-WHERE id = 2;
+SET status = 3
+WHERE id = 3;
 
 exec sp_help 'dbo.ticket'
