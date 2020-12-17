@@ -7,8 +7,11 @@ passwordhash,
 firstname,
 lastname,
 s.name as salutation,
-billing_address,
-shipping_address,
+a.streetname,
+a.postalcode,
+a.cityname,
+a.country,
+ca.ship_bill_boolean,
 email,
 phone,
 last_login,
@@ -16,6 +19,17 @@ created_at,
 failed_logins
 from customers c
 inner join salutations s on c.salutation = s.id
+inner join customer_addresses ca ON c.id = ca.cid
+inner join addresses a ON ca.aid = a.id
+
+
+select * from customer_addresses
+select * from addresses a
+join countries c on a.country = c.iso
+
+select username, tc.name from ticket_categories_staff x
+join staff s on x.sid = s.id
+join ticket_categories tc on x.tcid = tc.id
 
 
 

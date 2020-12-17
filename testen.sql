@@ -16,53 +16,128 @@ DECLARE @select bit
 
 -- TODO: Set parameter values here. --?? hä lg domi
 
+
+--- STAFF 
+
+
 EXECUTE dbo.sp_CreateUser
    @username = 'mensur480'
   ,@password = 'Mensur123#'
   ,@firstname = 'Mensur'
   ,@lastname = 'Bukvarevic'
   ,@salutation = 1
-  ,@address1 = 'Reslfeldtstraße 10'
+  ,@address1 = 'Reslfeldtstraße 10,4451,Garsten,AT'
   ,@email = 'MBUKVAREVIC@GMAIL.COM'
+  ,@categories = 'Customer Services'
   ,@phone = '06764604331'
   ,@agent = 1
   ,@select = 1
 GO
+select username, tc.name from ticket_categories_staff x
+join staff s on x.sid = s.id
+join ticket_categories tc on x.tcid = tc.id
+select * from addresses a
+join countries c on a.country = c.iso
+GO
 
-
-
--- CUSTOMER
 EXEC sp_createUser
  'dominikk'
  ,'hallo!!!!'
  ,'Dominik'
  ,'Kainz'
  ,1 
- ,'Weinbergweg 4'
- ,'Weinbergweg 4'
- ,'kainz.domi@gmail.com'
- ,'0 66410 62393'
+ ,@address1 ='Weinbergweg 4,9400,Wolfsberg,AT'
+ ,@email ='kainz.domi@gmail.com'
+ ,@categories = 'Technical,Infrastucture Support,Website'
+ ,@phone = '0 66410 62393'
  ,@agent = 1
  ,@select = 1
+GO
+select username, tc.name from ticket_categories_staff x
+join staff s on x.sid = s.id
+join ticket_categories tc on x.tcid = tc.id
+select * from addresses a
+join countries c on a.country = c.iso
+GO
+
+EXEC sp_createUser
+ 'lukasss'
+ ,'geheim!'
+ ,'Lukas'
+ ,'Dworacek'
+ ,1 
+ ,@address1 ='Schererstraße 39b ,8052,Graz,AT'
+ ,@email ='lukas.dwori@gmail.com'
+ ,@categories = 'Technical,Infrastucture Support,Website'
+ ,@phone = '0 66410 6111112393'
+ ,@agent = 1
+ ,@select = 1
+GO
+select username, tc.name from ticket_categories_staff x
+join staff s on x.sid = s.id
+join ticket_categories tc on x.tcid = tc.id
+select * from addresses a
+join countries c on a.country = c.iso
 GO
 
 
 
---- STAFF 
+-- CUSTOMER
 EXEC sp_CreateUser 
-'huso111'
+'customers1'  -- must be unique
 ,'hallo!!!!'
-,'Dominik'
-,'Kainz'
+,'Hansi'
+,'Hinterseher'
 ,1 
-,'Weinbergweg 4'
-,'Weinbergweg 4'
-,'kainz.domi@gmail.com'
-,'0664102002'
+,@address1 ='Schererstraße 39b ,8052,Graz,AT'
+,@address2 ='Haydengasse 7 ,8020,Graz,AT'
+,@email ='lukas11.d2sws11s22so22ri@gmail.com'  -- must be unique
+,@phone = '0 66410 6111112393'
 ,@agent = 0
 ,@select = 1
+GO
+select * from customers
+select * from customer_addresses
+select * from addresses a
+GO
 
 
+EXEC sp_CreateUser 
+'customer2'
+,'hallo!!!!'
+,'Hansi'
+,'Hinterseher 2'
+,1 
+,@address1 ='XY Gasse ,8052,Graz,AT'
+,@email ='hallihal2lo@gmail.com'
+,@phone = '0 66410 6111112393'
+,@agent = 0
+,@select = 1
+GO
+select * from customers
+select * from customer_addresses
+select * from addresses a
+GO
+
+
+
+EXEC sp_CreateUser 
+'customer3'
+,'hallo!!!!'
+,'Herbert'
+,'Prohaska 12'
+,1 
+,@address1 ='Beste leben ,8052,Graz,AT'
+,@address2 ='net leben ,8052,Graz,AT'
+,@email ='hallihal2los@gmail.com'
+,@phone = '0 66410 6111112393'
+,@agent = 0
+,@select = 1
+GO
+select * from customers
+select * from customer_addresses
+select * from addresses a
+GO
 
 
 
