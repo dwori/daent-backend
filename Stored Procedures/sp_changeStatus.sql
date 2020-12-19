@@ -33,9 +33,9 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
         END
         ELSE 
         BEGIN;
-            THROW 50001, 'No id found',1;
+            THROW 50001, 'No id was found!',1;
         END
-        COMMIT;
+        COMMIT TRANSACTION;
         END TRY
         BEGIN CATCH
             SET @errorLine = ERROR_LINE()

@@ -61,13 +61,13 @@ join countries c on a.country = c.iso
 GO
 
 EXEC sp_createUser
- 'lukasss'
- ,'geheim!'
+ 'dwori10'
+ ,'Pa55w.rd!!'
  ,'Lukas'
  ,'Dworacek'
  ,1 
  ,@address1 ='Schererstraße 39b ,8052,Graz,AT'
- ,@email ='lukas.dwori@gmail.com'
+ ,@email ='lukas.dworacek@gmail.com'
  ,@categories = 'Technical,Infrastucture Support,Website'
  ,@phone = '0 66410 6111112393'
  ,@agent = 1
@@ -139,8 +139,26 @@ select * from customer_addresses
 select * from addresses a
 GO
 
+GO
+EXEC sp_createUser 
+'Joergl'  -- must be unique
+,'hallo!!!!'
+,'Joerg'
+,'Haider'
+,1 
+,@address1 ='Hans-Sachs-Straße 23,9020,Klagenfurt,AT'
+,@address2 ='Haydengasse 7,8020,Graz,AT'
+,@email ='jörg.haider@gmail.com'  -- must be unique
+,@phone = '0 66410 6111112393'
+,@agent = 0
+,@select = 1
+GO
 
 
+select * from customers
+select * from customer_addresses
+select * from addresses a
+GO
 
 select * from dbo.staff
 select * from dbo.customers
@@ -148,3 +166,18 @@ select * from dbo.customers
 exec sp_help 'dbo.customers'
 
 
+--tickets
+SELECT * FROM ticket
+SELECT * FROM customers
+SELECT * FROM ticket_categories
+SELECT * From staff
+
+EXEC sp_createTicket 'Big Problem2','I hav problems',3,@category = 6
+
+EXEC sp_changeStatus 2,2,@select = 1
+SELECT * FROM ticket WHERE id = 2
+
+EXEC sp_changeStatus 2,1,@select = 1
+SELECT * FROM ticket WHERE id = 2
+
+SELECT * FROM ticket_statuses
