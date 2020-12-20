@@ -167,17 +167,39 @@ exec sp_help 'dbo.customers'
 
 
 --tickets
-SELECT * FROM ticket
 SELECT * FROM customers
 SELECT * FROM ticket_categories
-SELECT * From staff
 
-EXEC sp_createTicket 'Big Problem2','I hav problems',3,@category = 6
 
-EXEC sp_changeStatus 2,2,@select = 1
-SELECT * FROM ticket WHERE id = 2
+SELECT s.username,s.ticket_queue,s.finished_tickets,c.name From staff s
+INNER JOIN ticket_categories_staff t ON s.id = t.sid
+INNER JOIN ticket_categories c ON t.tcid = c.id
+SELECT * FROM ticket
 
-EXEC sp_changeStatus 2,1,@select = 1
-SELECT * FROM ticket WHERE id = 2
 
+EXEC sp_createTicket 'Trigger Problem','Der Status Update trigger funktioniert nicht so wie er soll!',3,@category = 1;
+
+--Auf Status 2 ändern
+EXEC sp_changeStatus 6,2,@select = 1
+SELECT * FROM ticket WHERE id = 6
+
+--Auf Status 1 zurückändern
+EXEC sp_changeStatus 6,1,@select = 1
+SELECT * FROM ticket WHERE id = 6
+
+--Auf Status 3 ändern
+EXEC sp_changeStatus 4,3,@select = 1
+SELECT * FROM ticket WHERE id = 4
 SELECT * FROM ticket_statuses
+
+
+SELECT t.subject,c.username,s.username,ts.name
+FROM ticket t
+INNER JOIN staff s ON t.agent = s.id
+INNER JOIN customers c ON t.customer_number = c.id
+INNER JOIN ticket_statuses ts ON t.status = ts.id
+
+SELECT t.id, t.subject, s.username AS agent, t.status, t.updated_at, t.completed_at FROM ticket t
+INNER JOIN staff s ON t.agent = s.id
+WHERE t.status < 3;
+SELECT id,username, ticket_queue FROM staff;

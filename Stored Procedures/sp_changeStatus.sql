@@ -10,7 +10,12 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
     AS
     BEGIN
         SET NOCOUNT ON;
+
         --Variablen
+        DECLARE @agent INT
+        SET @agent = (SELECT agent FROM ticket WHERE id = @ticket_id)
+
+
             
         BEGIN TRY
         Begin TRANSACTION;
@@ -28,7 +33,7 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
             BEGIN
                 UPDATE dbo.staff
                 SET ticket_queue = ticket_queue - 1
-                WHERE id = @ticket_id
+                WHERE id = @agent
             END
         END
         ELSE 
