@@ -34,6 +34,10 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
                 UPDATE dbo.staff
                 SET ticket_queue = ticket_queue - 1
                 WHERE id = @agent
+
+                UPDATE dbo.staff
+                SET finished_tickets = finished_tickets + 1
+                WHERE id = @agent
             END
         END
         ELSE 

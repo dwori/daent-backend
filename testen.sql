@@ -203,3 +203,7 @@ SELECT t.id, t.subject, s.username AS agent, t.status, t.updated_at, t.completed
 INNER JOIN staff s ON t.agent = s.id
 WHERE t.status < 3;
 SELECT id,username, ticket_queue FROM staff;
+
+SELECT * FROM ticket WHERE status > 2
+SELECT * FROM staff
+
