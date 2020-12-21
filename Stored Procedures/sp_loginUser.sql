@@ -1,7 +1,7 @@
 GO
 CREATE OR ALTER PROCEDURE sp_loginUser
   
-  @username VARCHAR(60),
+  @username VARCHAR(50),
   @password VARCHAR(128),
   @agent BIT = 0,
 
@@ -79,7 +79,3 @@ CREATE OR ALTER PROCEDURE sp_loginUser
             SELECT @errorCode AS resultCode, @errorMsg AS errorMessage, @errorLine AS errorLine
     END
 GO
-
-
-
-EXEC sp_LoginUser 'dominikk', 'hallo!!!!', @agent = 0, @select = 1

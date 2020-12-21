@@ -1,12 +1,17 @@
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+/*
+Erstellt ein neues Ticket, welches mit den dafür nötigen Attributen befüllt wird. 
+Über die Kategorie werden passende Sachbearbeiter ermittelt. 
+Dann wird dem jenigen mit der niedrigsten queue das Ticket zugeordnet. 
+Eingabeparameter: , subject, category, content. 
+Beim ausführen der Prozedur wird der timestamp in created_at gespeichert, Status und priority auf auf den default Wert 1 gesetzt.
+*/
+
 GO
 CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
     @subject VARCHAR(100),
     @content VARCHAR(255),
     @customer INT,
-    @status TINYINT = 1,
+    @status INT = 1,
     @category TINYINT,
     @priority TINYINT = 1,
     

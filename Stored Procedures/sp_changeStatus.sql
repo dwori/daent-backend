@@ -1,7 +1,10 @@
+/*Ändert den Status eines Tickets*/
+
+
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
     @ticket_id INT,
-    @status TINYINT,
+    @status INT,
     --Developer Mode
     @errorCode int = NULL OUTPUT,  
     @errorLine int = NULL OUTPUT,
@@ -18,18 +21,26 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
 
             
         BEGIN TRY
-        Begin TRANSACTION;
+        BEGIN TRANSACTION
         --Wenn Ticket ID existiert führe code aus
+        IF (SELECT COUNT(*) FROM dbo.ticket WHERE id = @ticket_id AND status = @status) = 1
+            THROW 50001, 'ticket has already this status',1;
+
         IF (SELECT COUNT(*) FROM dbo.ticket WHERE id = @ticket_id) = 1
         BEGIN
-            IF ERROR_MESSAGE() IS NULL
-            BEGIN
+            -- IF ERROR_MESSAGE() IS NULL
+            -- BEGIN
                 UPDATE dbo.ticket
                 SET status = @status
                 WHERE id = @ticket_id
-            END
+            -- END
+            
+            /*
+            Bei insert eines Status, wird die Queue um 1 erhöht bzw. bei Update um 1 verringert. 
+            Dabei wird beim verringern der queue dem Mitarbeiter closed_cases um 1 erhöht.
+            */
 
-            IF @status = 3 AND ERROR_MESSAGE() IS NULL
+            IF @status = 3 -- AND ERROR_MESSAGE() IS NULL
             BEGIN
                 UPDATE dbo.staff
                 SET ticket_queue = ticket_queue - 1
@@ -42,7 +53,7 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
         END
         ELSE 
         BEGIN;
-            THROW 50001, 'No id was found!',1;
+            THROW 50002, 'No id was found!',1;
         END
         COMMIT TRANSACTION;
         END TRY
@@ -51,10 +62,15 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
             SET @errorMsg = ERROR_MESSAGE()
             IF ERROR_MESSAGE() like '%FK_ticket_statuses%'
                 SET @errorCode = -1
-            ELSE IF ERROR_MESSAGE() like '%FK_ticket%'
+            IF ERROR_MESSAGE() like '%FK_ticket%'
                 SET @errorCode = -2
+
+            ELSE IF ERROR_NUMBER() >= 50000
+                SET @errorCode = (ERROR_NUMBER() - 50000) * -1
             ELSE
                 SET @errorCode = -99
+
+            IF @errorCode <> -871
             ROLLBACK;
         END CATCH
         IF @select = 1

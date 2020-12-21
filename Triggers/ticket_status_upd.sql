@@ -1,3 +1,9 @@
+/*
+Bei update eines Ticket Status wird in created_at und completed_at ein timestamp eingetragen.
+*/
+
+
+
 GO
 CREATE OR ALTER TRIGGER ticket_status_upd
 ON dbo.ticket

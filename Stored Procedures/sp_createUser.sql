@@ -2,16 +2,16 @@
 GO
 CREATE OR ALTER PROCEDURE sp_createUser
   
-  @username VARCHAR(60),
+  @username VARCHAR(50),
   @password VARCHAR(128),
-  @firstname VARCHAR(255),
-  @lastname VARCHAR(255),
+  @firstname VARCHAR(50),
+  @lastname VARCHAR(50),
   @salutation TINYINT,
   @address1 VARCHAR(255),
   @address2 VARCHAR(255) = NULL,
   @categories VARCHAR(255) = NULL,
-  @email VARCHAR(255),
-  @phone VARCHAR(255),
+  @email VARCHAR(150),
+  @phone VARCHAR(150),
   @agent bit = 0,
   
   --Error Handeling ;)

@@ -80,6 +80,14 @@ select * from addresses a
 join countries c on a.country = c.iso
 GO
 
+GO
+EXEC sp_loginUser
+'dwori10'  -- must be unique
+,'Pa55w.rd!!'
+,@agent = 1
+,@select = 1
+GO
+
 
 
 -- CUSTOMER
@@ -154,6 +162,14 @@ EXEC sp_createUser
 ,@select = 1
 GO
 
+GO
+EXEC sp_loginUser
+'Joergl'  -- must be unique
+,'hallo!!!1!'
+,@agent = 0
+,@select = 1
+GO
+
 
 select * from customers
 select * from customer_addresses
@@ -179,15 +195,15 @@ SELECT * FROM ticket
 
 EXEC sp_createTicket 'Trigger Problem','Der Status Update trigger funktioniert nicht so wie er soll!',3,@category = 1;
 
---Auf Status 2 ändern
+--Auf Status 2 ï¿½ndern
 EXEC sp_changeStatus 6,2,@select = 1
 SELECT * FROM ticket WHERE id = 6
 
---Auf Status 1 zurückändern
+--Auf Status 1 zurï¿½ckï¿½ndern
 EXEC sp_changeStatus 6,1,@select = 1
 SELECT * FROM ticket WHERE id = 6
 
---Auf Status 3 ändern
+--Auf Status 3 ï¿½ndern
 EXEC sp_changeStatus 4,3,@select = 1
 SELECT * FROM ticket WHERE id = 4
 SELECT * FROM ticket_statuses
