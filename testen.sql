@@ -61,13 +61,13 @@ join countries c on a.country = c.iso
 GO
 
 EXEC sp_createUser
- 'lukasss'
- ,'geheim!'
+ 'dwori10'
+ ,'Pa55w.rd!!'
  ,'Lukas'
  ,'Dworacek'
  ,1 
  ,@address1 ='Schererstraße 39b ,8052,Graz,AT'
- ,@email ='lukas.dwori@gmail.com'
+ ,@email ='lukas.dworacek@gmail.com'
  ,@categories = 'Technical,Infrastucture Support,Website'
  ,@phone = '0 66410 6111112393'
  ,@agent = 1
@@ -78,6 +78,14 @@ join staff s on x.sid = s.id
 join ticket_categories tc on x.tcid = tc.id
 select * from addresses a
 join countries c on a.country = c.iso
+GO
+
+GO
+EXEC sp_loginUser
+'dwori10'  -- must be unique
+,'Pa55w.rd!!'
+,@agent = 1
+,@select = 1
 GO
 
 
@@ -141,8 +149,34 @@ select * from customer_addresses
 select * from addresses a
 GO
 
+GO
+EXEC sp_createUser 
+'Joergl'  -- must be unique
+,'hallo!!!!'
+,'Joerg'
+,'Haider'
+,1 
+,@address1 ='Hans-Sachs-Straße 23,9020,Klagenfurt,AT'
+,@address2 ='Haydengasse 7,8020,Graz,AT'
+,@email ='jörg.haider@gmail.com'  -- must be unique
+,@phone = '0 66410 6111112393'
+,@agent = 0
+,@select = 1
+GO
+
+GO
+EXEC sp_loginUser
+'Joergl'  -- must be unique
+,'hallo!!!1!'
+,@agent = 0
+,@select = 1
+GO
 
 
+select * from customers
+select * from customer_addresses
+select * from addresses a
+GO
 
 select * from dbo.staff
 select * from dbo.customers
@@ -150,3 +184,52 @@ select * from dbo.customers
 exec sp_help 'dbo.customers'
 
 
+--tickets
+SELECT * FROM customers
+SELECT * FROM ticket_categories
+
+
+SELECT s.username,s.ticket_queue,s.finished_tickets,c.name From staff s
+INNER JOIN ticket_categories_staff t ON s.id = t.sid
+INNER JOIN ticket_categories c ON t.tcid = c.id
+SELECT * FROM ticket
+
+
+EXEC sp_createTicket 'Trigger Problem','Der Status Update trigger funktioniert nicht so wie er soll!',3,@category = 1;
+
+--Auf Status 2 ändern
+EXEC sp_changeStatus 6,2,@select = 1
+SELECT * FROM ticket WHERE id = 6
+
+--Auf Status 1 zurückändern
+EXEC sp_changeStatus 6,1,@select = 1
+SELECT * FROM ticket WHERE id = 6
+
+--Auf Status 3 ändern
+EXEC sp_changeStatus 4,3,@select = 1
+SELECT * FROM ticket WHERE id = 4
+SELECT * FROM ticket_statuses
+
+
+SELECT t.subject,c.username,s.username,ts.name
+FROM ticket t
+INNER JOIN staff s ON t.agent = s.id
+INNER JOIN customers c ON t.customer_number = c.id
+INNER JOIN ticket_statuses ts ON t.status = ts.id
+
+SELECT t.id, t.subject, s.username AS agent, t.status, t.updated_at, t.completed_at FROM ticket t
+INNER JOIN staff s ON t.agent = s.id
+WHERE t.status < 3;
+SELECT id,username, ticket_queue FROM staff;
+
+SELECT * FROM ticket WHERE status > 2
+SELECT * FROM staff
+
+--Change priority
+
+SELECT * FROM ticket
+
+--Ändern der Priorität auf 2
+EXEC sp_changePriority 3,3,@select = 1
+
+SELECT * FROM ticket where id = 3

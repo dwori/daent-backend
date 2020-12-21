@@ -4,53 +4,56 @@ DROP TABLE IF EXISTS customers
 DROP TABLE IF EXISTS countries
 DROP TABLE IF EXISTS addresses
 DROP TABLE IF EXISTS customer_addresses
-
 DROP TABLE IF EXISTS ticket_categories_staff
 DROP TABLE IF EXISTS staff
 DROP TABLE IF EXISTS ticket
 DROP TABLE IF EXISTS ticket_statuses
 DROP TABLE IF EXISTS ticket_priorities
 DROP TABLE IF EXISTS ticket_categories
---  addresses added
+
+
+
 
 CREATE TABLE salutations (
     id TINYINT NOT NULL,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(50) NOT NULL,
     CONSTRAINT PK_salutations PRIMARY KEY (id),
     CONSTRAINT UK_salutations_name UNIQUE (name)
 )
-
 INSERT INTO salutations (id,name) VALUES (1, 'Mr.')
 INSERT INTO salutations (id,name) VALUES (2, 'Ms.')
 INSERT INTO salutations (id,name) VALUES (3, 'Company')
 INSERT INTO salutations (id,name) VALUES (4, 'other')
 
+
+
 CREATE TABLE customers (
     id INT IDENTITY NOT NULL,
-    username VARCHAR(60) NOT NULL,
+    username VARCHAR(50) NOT NULL,
     passwordhash VARCHAR(128),
-    firstname VARCHAR(255),
-    lastname VARCHAR(255),
-    salutation TINYINT NOT NULL,
-     -- billing_address VARCHAR(255),
-     -- shipping_address VARCHAR(255),
-    email VARCHAR(255),
-    phone VARCHAR(255),
+    lastname VARCHAR(50),
+    firstname VARCHAR(50),
+    -- billing_address VARCHAR(255),
+    -- shipping_address VARCHAR(255),
+    email VARCHAR(150),
+    phone VARCHAR(50),
     last_login datetime2(0),
     created_at datetime2(0) CONSTRAINT DF_customer_created_at DEFAULT SYSDATETIME(),
-    failed_logins tinyint NOT NULL CONSTRAINT DF_customer_failed_logins DEFAULT 0
+    failed_logins tinyint NOT NULL CONSTRAINT DF_customer_failed_logins DEFAULT 0,
+    salutation TINYINT NOT NULL,
     CONSTRAINT PK_customers PRIMARY KEY (id),
     CONSTRAINT FK_customers_salutations FOREIGN KEY(salutation) REFERENCES salutations(id),
     CONSTRAINT UK_customers_username UNIQUE (username),
     CONSTRAINT UK_customers_email UNIQUE (email)
 )
 
+
+
 CREATE TABLE countries (
     iso VARCHAR(2),
-    name VARCHAR(255),
+    name VARCHAR(100),
     CONSTRAINT PK_countries PRIMARY KEY (iso)
 )
-
 INSERT INTO countries (iso, name) VALUES ('AL', 'Albanien')
 INSERT INTO countries (iso, name) VALUES ('BE', 'Belgium')
 INSERT INTO countries (iso, name) VALUES ('BA', 'Bosnia and Herzegovina')
@@ -92,15 +95,18 @@ INSERT INTO countries (iso, name) VALUES ('HU', 'Hungary')
 INSERT INTO countries (iso, name) VALUES ('GB', 'United Kingdom')
 INSERT INTO countries (iso, name) VALUES ('CY', 'Cyprus')
 
+
+
 CREATE TABLE addresses (
     id INT IDENTITY NOT NULL,
-    streetname VARCHAR(255),
+    streetname VARCHAR(80),
     postalcode INT,
     cityname VARCHAR(80),
     country VARCHAR(2),
     CONSTRAINT PK_addresses PRIMARY KEY (id),
     CONSTRAINT FK_addresses_country FOREIGN KEY(country) REFERENCES countries(iso),
 )
+
 
 CREATE TABLE customer_addresses (
     aid INT,
@@ -113,7 +119,7 @@ CREATE TABLE customer_addresses (
 
 CREATE TABLE ticket_categories (
     id TINYINT NOT NULL,
-    name VARCHAR(255),
+    name VARCHAR(30),
     CONSTRAINT PK_ticket_categories PRIMARY KEY(id),
 	CONSTRAINT UK_ticket_categories_name UNIQUE (name)
 )
@@ -127,19 +133,19 @@ INSERT INTO ticket_categories (id,name) VALUES (7, 'VoIP')
 
 CREATE TABLE staff (
     id INT IDENTITY NOT NULL,
-    username VARCHAR(60) NOT NULL,
+    username VARCHAR(50) NOT NULL,
     passwordhash VARCHAR(128),
     ticket_queue TINYINT NOT NULL CONSTRAINT DF_staff_ticket_queue DEFAULT 0,
     finished_tickets INT NOT NULL CONSTRAINT DF_staff_finished_tickets DEFAULT 0,
-    salutation TINYINT NOT NULL,
-    firstname VARCHAR(255),
-    lastname VARCHAR(255),
-    address INT,
-    email VARCHAR(255),
-    phone VARCHAR(255),
+    lastname VARCHAR(50),
+    firstname VARCHAR(50),
+    email VARCHAR(150),
+    phone VARCHAR(50),
     last_login datetime2(0),
     created_at datetime2(0) CONSTRAINT DF_staff_created_at DEFAULT SYSDATETIME(),
     failed_logins tinyint NOT NULL CONSTRAINT DF_staff_failed_logins DEFAULT 0,
+    address INT,
+    salutation TINYINT NOT NULL,
     CONSTRAINT PK_staff PRIMARY KEY (id),
     CONSTRAINT FK_staff_salutations FOREIGN KEY(salutation) REFERENCES salutations (id),
     CONSTRAINT UK_staff_username UNIQUE (username),
@@ -154,7 +160,7 @@ CREATE TABLE ticket_categories_staff (
     CONSTRAINT PK_ticket_categories_staff PRIMARY KEY (sid,tcid)
 )
 CREATE TABLE ticket_statuses (
-    id TINYINT PRIMARY KEY NOT NULL,
+    id INT PRIMARY KEY NOT NULL,
     name VARCHAR(20),
     CONSTRAINT UK_ticket_statuses_name UNIQUE (name)
 )
@@ -177,7 +183,7 @@ CREATE TABLE ticket (
     ticket_content VARCHAR(255),
     customer_number INT,
 	agent INT,
-    status TINYINT,
+    status INT,
     category TINYINT,
     priority TINYINT,
     created_at DATETIME2 CONSTRAINT DF_ticket_created_at DEFAULT SYSDATETIME(),
