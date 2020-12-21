@@ -83,20 +83,22 @@ GO
 
 
 -- CUSTOMER
-EXEC sp_CreateUser 
-'customers1'  -- must be unique
+EXEC sp_createUser
+'mensi4801'  -- must be unique
 ,'hallo!!!!'
-,'Hansi'
-,'Hinterseher'
+,'Mensur'
+,'Bukvarevic'
 ,1 
-,@address1 ='Schererstra√üe 39b ,8052,Graz,AT'
-,@address2 ='Haydengasse 7 ,8020,Graz,AT'
-,@email ='lukas11.d2sws11s22so22ri@gmail.com'  -- must be unique
-,@phone = '0 66410 6111112393'
+,@address1 ='Ghegagasse 15/29,8020,Graz,AT'
+,@address2 ='Reslfeldtstraﬂe 10,4451,Garsten,AT'
+,@email ='mbukvarevic123@gmail.com'  -- must be unique
+,@phone = '+436764604331'
 ,@agent = 0
 ,@select = 1
 GO
+
 select * from customers
+SELECT * from staff
 select * from customer_addresses
 select * from addresses a
 GO
@@ -122,7 +124,7 @@ GO
 
 
 EXEC sp_CreateUser 
-'customer3'
+'Mensur'
 ,'hallo!!!!'
 ,'Herbert'
 ,'Prohaska 12'
