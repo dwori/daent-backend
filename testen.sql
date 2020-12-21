@@ -195,10 +195,11 @@ INNER JOIN ticket_categories c ON t.tcid = c.id
 SELECT * FROM ticket
 
 
-EXEC sp_createTicket 'Trigger Problem','Der Status Update trigger funktioniert nicht so wie er soll!',3,@category = 1;
+EXEC sp_createTicket 'Trigger Problem','Der Status Update trigger funktioniert nicht so wie er soll!',1,@category = 1;
 
+SELECT * from dbo.ticket
 --Auf Status 2 ändern
-EXEC sp_changeStatus 6,2,@select = 1
+EXEC sp_changeStatus 3,3,@select = 1
 SELECT * FROM ticket WHERE id = 6
 
 --Auf Status 1 zurückändern
