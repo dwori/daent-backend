@@ -164,6 +164,7 @@ CREATE TABLE ticket_statuses (
     name VARCHAR(20),
     CONSTRAINT UK_ticket_statuses_name UNIQUE (name)
 )
+
 INSERT INTO ticket_statuses (id,name) VALUES (1, 'Pending')
 INSERT INTO ticket_statuses (id,name) VALUES (2, 'in Process')
 INSERT INTO ticket_statuses (id,name) VALUES (3, 'Solved')
@@ -173,6 +174,7 @@ CREATE TABLE ticket_priorities (
     name VARCHAR(20),
     CONSTRAINT UK_ticket_priorities_name UNIQUE (name)
 )
+INSERT INTO ticket_priorities (id,name) VALUES (0, 'None')
 INSERT INTO ticket_priorities (id,name) VALUES (1, 'Low')
 INSERT INTO ticket_priorities (id,name) VALUES (2, 'Normal')
 INSERT INTO ticket_priorities (id,name) VALUES (3, 'Critical')
