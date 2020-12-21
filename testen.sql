@@ -223,3 +223,11 @@ SELECT id,username, ticket_queue FROM staff;
 SELECT * FROM ticket WHERE status > 2
 SELECT * FROM staff
 
+--Change priority
+
+SELECT * FROM ticket
+
+--Ändern der Priorität auf 2
+EXEC sp_changePriority 3,3,@select = 1
+
+SELECT * FROM ticket where id = 3
