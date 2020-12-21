@@ -195,15 +195,15 @@ SELECT * FROM ticket
 
 EXEC sp_createTicket 'Trigger Problem','Der Status Update trigger funktioniert nicht so wie er soll!',3,@category = 1;
 
---Auf Status 2 �ndern
+--Auf Status 2 ändern
 EXEC sp_changeStatus 6,2,@select = 1
 SELECT * FROM ticket WHERE id = 6
 
---Auf Status 1 zur�ck�ndern
+--Auf Status 1 zurückändern
 EXEC sp_changeStatus 6,1,@select = 1
 SELECT * FROM ticket WHERE id = 6
 
---Auf Status 3 �ndern
+--Auf Status 3 ändern
 EXEC sp_changeStatus 4,3,@select = 1
 SELECT * FROM ticket WHERE id = 4
 SELECT * FROM ticket_statuses
