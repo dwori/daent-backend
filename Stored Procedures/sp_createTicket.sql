@@ -31,18 +31,17 @@ CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
 
         BEGIN TRY
             IF (SELECT COUNT(*) FROM dbo.ticket_categories WHERE id = @category) = 0
+            AND (SELECT COUNT(*) FROM dbo.ticket_categories_staff WHERE tcid = @category) = 0
                 THROW 50004, 'this category does not exist', 1;
             --Den Agenten mit der geringsten ticket_queue ermitteln und @agent hizufügen
             SET @agent = (
                 SELECT TOP 1 id FROM dbo.staff WHERE id IN(
                     SELECT sid 
                     FROM dbo.ticket_categories_staff 
-                    WHERE tcid = @category AND ticket_queue < @maxQueue
-                    )
+                    WHERE tcid = @category
+                    ) AND ticket_queue < @maxQueue
                 ORDER BY ticket_queue ASC
             )
-            IF @agent = null
-                THROW 50009,'No available agent at the moment, We reached the capacity!',1;
             --ticket queue für diesen Agenten um 1 erhöhen
 
 

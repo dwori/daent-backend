@@ -259,7 +259,17 @@ SELECT * FROM ticket_categories_staff
 SELECT * FROM staff
 
 UPDATE staff
-SET ticket_queue = 1 where id =3;
+SET ticket_queue = 2 where id =2;
 EXEC sp_createTicket '3. test','empty content',3,@category = 4, @select = 1;
 
 SELECT * FROM ticket
+
+
+--Switch agents
+SELECT * FROM ticket WHERE status < 3
+SELECT * FROM staff
+
+EXEC sp_createTicket 'Switchtest','try to switch agents',3,@category = 3,@select = 1;
+
+EXEC sp_switchAgent 4,@select = 1;
+
