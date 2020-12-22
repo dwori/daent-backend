@@ -64,7 +64,7 @@ CREATE OR ALTER PROCEDURE sp_createUser
 
 
 
-            DECLARE @salt varchar(10) = '#sA1tyAF!?'
+            DECLARE @salt varchar(10) = (SELECT value FROM dbo.settings WHERE id = 2)
             DECLARE @hash varchar(128) = CONVERT(varchar(128), HASHBYTES('SHA2_512', @password + @salt), 2)
 
             DECLARE @address_id1 int
@@ -157,7 +157,7 @@ CREATE OR ALTER PROCEDURE sp_createUser
                         END
                 COMMIT TRANSACTION
             END
-
+        
         END TRY
         BEGIN CATCH
             ROLLBACK

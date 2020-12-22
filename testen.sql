@@ -249,9 +249,9 @@ SELECT * FROM staff
 SELECT * FROM ticket
 
 --Ändern der Priorität auf 2
-EXEC sp_changePriority 3,3,@select = 1
+EXEC sp_changePriority 4,2,@select = 1
 
-SELECT * FROM ticket where id = 3
+SELECT * FROM ticket where id = 4
 
 
 --MAX ticket_queue
@@ -271,5 +271,5 @@ SELECT * FROM staff
 
 EXEC sp_createTicket 'Switchtest','try to switch agents',3,@category = 3,@select = 1;
 
-EXEC sp_switchAgent 4,@select = 1;
+EXEC sp_switchAgent 15,@select = 1;
 

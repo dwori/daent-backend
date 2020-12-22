@@ -1,7 +1,7 @@
 GO
 CREATE OR ALTER PROCEDURE sp_changePriority
     @ticket_id  INT,
-    @priority SMALLINT,
+    @priority TINYINT,
 
     --Error Handeling ;)
     @errorCode INT = NULL OUTPUT, 
@@ -15,7 +15,9 @@ CREATE OR ALTER PROCEDURE sp_changePriority
         BEGIN
             SET NOCOUNT ON;
             BEGIN TRY
-            --Wenn Ticket existiert, führe Code aus.
+
+
+            --Wenn Ticket existiert, fï¿½hre Code aus.
             IF (SELECT COUNT(*) FROM dbo.ticket WHERE id = @ticket_id AND priority = @priority) = 1
             THROW 50004, 'ticket has already this priority',1;
 
@@ -26,13 +28,18 @@ CREATE OR ALTER PROCEDURE sp_changePriority
                 WHERE id = @ticket_id
 
             END
+            ELSE
+                THROW 50025,'This ticket does not exist!',1;
+
+            SET @errorCode = @priority
+
             END TRY
             BEGIN CATCH
             SET @errorLine = ERROR_LINE()
             SET @errorMsg = ERROR_MESSAGE()
             IF ERROR_MESSAGE() like '%FK_ticket_priorities%'
                 SET @errorCode = -1
-            IF ERROR_MESSAGE() like '%FK_ticket%'
+            ELSE IF ERROR_MESSAGE() like '%FK_ticket%'
                 SET @errorCode = -2
 
             ELSE IF ERROR_NUMBER() >= 50000
@@ -41,6 +48,10 @@ CREATE OR ALTER PROCEDURE sp_changePriority
                 SET @errorCode = -99
         END CATCH
         IF @select = 1
-            SELECT @errorCode AS resultCode, @errorMsg AS errorMessage, @errorLine AS errorLine
+             SELECT @errorCode AS errorCode,
+            @errorMsg AS errorMsg,
+            @errorLine AS errorLine
+        ELSE IF @errorCode > 0
+            SELECT @errorCode AS userId
         END
 GO

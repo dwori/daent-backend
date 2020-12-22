@@ -202,7 +202,7 @@ CREATE TABLE ticket (
 
 CREATE TABLE settings (
     id INTEGER IDENTITY NOT NULL,
-    value VARCHAR NOT NULL,
+    value VARCHAR(100) NOT NULL,
     description VARCHAR(100),
     CONSTRAINT PK_settings PRIMARY KEY (id)
 )
@@ -210,3 +210,4 @@ CREATE TABLE settings (
 --DROP TABLE settings;
 SELECT * FROM settings
 INSERT INTO settings (value,description) VALUES ('5','max ticket_queue')
+INSERT INTO settings (value,description) VALUES ('#sA1tyAF!?','salt für password encryption')
