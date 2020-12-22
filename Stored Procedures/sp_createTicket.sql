@@ -25,6 +25,9 @@ CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
         SET NOCOUNT ON;
         --Variables
         DECLARE @agent INT
+        DECLARE @maxQueue INT 
+        SET @maxQueue = (SELECT value FROM dbo.settings WHERE id = 1)
+
 
         BEGIN TRY
             IF (SELECT COUNT(*) FROM dbo.ticket_categories WHERE id = @category) = 0
@@ -34,12 +37,14 @@ CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
                 SELECT TOP 1 id FROM dbo.staff WHERE id IN(
                     SELECT sid 
                     FROM dbo.ticket_categories_staff 
-                    WHERE tcid = @category
+                    WHERE tcid = @category AND ticket_queue < @maxQueue
                     )
                 ORDER BY ticket_queue ASC
             )
+            IF @agent = null
+                THROW 50009,'No available agent at the moment, We reached the capacity!',1;
             --ticket queue für diesen Agenten um 1 erhöhen
-            
+
 
             INSERT INTO dbo.ticket(subject,ticket_content,customer_number,agent,status,category,priority)
             VALUES(@subject,@content,@customer,@agent,@status,@category,@priority)

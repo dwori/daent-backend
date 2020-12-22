@@ -9,14 +9,14 @@ BEGIN
 	-- Prüfen: ist es eine relevante Änderung?
 	IF UPDATE(status) -- OR UPDATE(spalte2) OR UPDATE(spalte3); liefert beim INSERT immer TRUE
 	BEGIN
-		PRINT '... ich mach jetzt was ...';
+		--PRINT '... ich mach jetzt was ...';
 		-- Prüfen: gibt es irgendetwas, das nicht passt?
 		IF (SELECT COUNT(*)
 			FROM inserted i
 			INNER JOIN deleted d ON i.id = d.id
 			WHERE i.status < d.status) > 0
 		BEGIN
-            PRINT '-------------------ALARM--------------------'
+            --PRINT '-------------------ALARM--------------------'
 			ROLLBACK;
 			THROW 50871, 'Ungültiger Statusübergang', 1;
 		END

@@ -98,7 +98,7 @@ EXEC sp_createUser
 ,'Bukvarevic'
 ,1 
 ,@address1 ='Ghegagasse 15/29,8020,Graz,AT'
-,@address2 ='Reslfeldtstra�e 10,4451,Garsten,AT'
+,@address2 ='Reslfeldtstra�e 10,4451,Garsten,AT'
 ,@email ='mbukvarevic123@gmail.com'  -- must be unique
 ,@phone = '+436764604331'
 ,@agent = 0
@@ -195,20 +195,38 @@ INNER JOIN ticket_categories c ON t.tcid = c.id
 SELECT * FROM ticket
 
 
-EXEC sp_createTicket 'Trigger Problem','Der Status Update trigger funktioniert nicht so wie er soll!',1,@category = 1;
+EXEC sp_createTicket 'Trigger Problem','Der Status Update trigger funktioniert nicht so wie er soll!',2,@category = 1,@select =1;
+EXEC sp_createTicket 'Alles hin!','Es geht afpch gar nix mehr!!',3,@category = 4, @select = 1;
 
-SELECT * from dbo.ticket
+
+SELECT t.id,
+  t.subject,
+  t.ticket_content,
+  c.username AS customer,
+  s.username AS agent,
+  ts.name AS status,
+  tc.name as category,
+  tp.name AS priority,
+  t.created_at,
+  t.updated_at,
+  t.completed_at from dbo.ticket t
+INNER JOIN customers c ON t.customer_number = c.id
+INNER JOIN staff s ON t.agent = s.id
+INNER JOIN ticket_categories tc ON t.category = tc.id
+INNER JOIN ticket_statuses ts ON t.status = ts.id
+INNER JOIN ticket_priorities tp ON t.priority = tp.id
+
 --Auf Status 2 ändern
-EXEC sp_changeStatus 3,3,@select = 1
-SELECT * FROM ticket WHERE id = 6
+EXEC sp_changeStatus 3,2,@select = 1
+SELECT * FROM ticket WHERE id = 3
 
 --Auf Status 1 zurückändern
-EXEC sp_changeStatus 6,1,@select = 1
-SELECT * FROM ticket WHERE id = 6
+EXEC sp_changeStatus 3,1,@select = 1
+SELECT * FROM ticket WHERE id = 3
 
 --Auf Status 3 ändern
-EXEC sp_changeStatus 4,3,@select = 1
-SELECT * FROM ticket WHERE id = 4
+EXEC sp_changeStatus 3,3,@select = 1
+SELECT * FROM ticket WHERE id = 3
 SELECT * FROM ticket_statuses
 
 
@@ -234,3 +252,14 @@ SELECT * FROM ticket
 EXEC sp_changePriority 3,3,@select = 1
 
 SELECT * FROM ticket where id = 3
+
+
+--MAX ticket_queue
+SELECT * FROM ticket_categories_staff
+SELECT * FROM staff
+
+UPDATE staff
+SET ticket_queue = 1 where id =3;
+EXEC sp_createTicket '3. test','empty content',3,@category = 4, @select = 1;
+
+SELECT * FROM ticket

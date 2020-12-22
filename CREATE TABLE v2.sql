@@ -198,3 +198,15 @@ CREATE TABLE ticket (
     CONSTRAINT FK_ticket_priorities FOREIGN KEY (priority) REFERENCES ticket_priorities(id),
     CONSTRAINT FK_ticket_statuses FOREIGN KEY (status) REFERENCES ticket_statuses(id)
 )
+
+
+CREATE TABLE settings (
+    id INTEGER IDENTITY NOT NULL,
+    value VARCHAR NOT NULL,
+    description VARCHAR(100),
+    CONSTRAINT PK_settings PRIMARY KEY (id)
+)
+
+--DROP TABLE settings;
+SELECT * FROM settings
+INSERT INTO settings (value,description) VALUES ('5','max ticket_queue')
