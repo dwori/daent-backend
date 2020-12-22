@@ -43,7 +43,8 @@ CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
                 ORDER BY ticket_queue ASC
             )
             --ticket queue für diesen Agenten um 1 erhöhen
-
+            IF @agent IS NULL
+                THROW 50089,'No agent available right now!',1;
 
             INSERT INTO dbo.ticket(subject,ticket_content,customer_number,agent,status,category,priority)
             VALUES(@subject,@content,@customer,@agent,@status,@category,@priority)

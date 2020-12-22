@@ -13,3 +13,5 @@ BEGIN
         THROW 50971, 'No agents available! All our agents ques are full!', 1;
 END
 Go
+
+--DROP TRIGGER IF EXISTS dbo.ticket_agentEmpty_ins
