@@ -17,11 +17,12 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
         --Variablen
         DECLARE @agent INT
         SET @agent = (SELECT agent FROM ticket WHERE id = @ticket_id)
-
+        DECLARE @tran int = @@trancount
 
             
         BEGIN TRY
         BEGIN TRANSACTION
+        set @tran = @@trancount
         --Wenn Ticket ID existiert führe code aus
         IF (SELECT COUNT(*) FROM dbo.ticket WHERE id = @ticket_id AND status = @status) = 1
             THROW 50001, 'ticket has already this status',1;
@@ -70,8 +71,8 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
             ELSE
                 SET @errorCode = -99
 
-            IF @errorCode <> -871
-            ROLLBACK;
+            IF @@trancount = 1
+                ROLLBACK
         END CATCH
         IF @select = 1
             SELECT @errorCode AS resultCode, @errorMsg AS errorMessage, @errorLine AS errorLine
