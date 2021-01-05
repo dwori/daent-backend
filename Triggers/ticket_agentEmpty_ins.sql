@@ -3,14 +3,18 @@
 GO
 CREATE OR ALTER TRIGGER dbo.ticket_agentEmpty_ins
 ON dbo.ticket
-FOR Insert
+FOR UPDATE
 AS
 BEGIN
     SET NOCOUNT ON;
 
     IF (SELECT COUNT(*) FROM inserted where agent IS NULL) > 0
+    BEGIN
         ROLLBACK TRANSACTION;
-        THROW 50971, 'No agents available! All our agents ques are full!', 1;
+        THROW 50071, 'No agents available! All our agents ques are full!', 1;
+    END
+    ELSE
+        COMMIT TRANSACTION;
 END
 Go
 

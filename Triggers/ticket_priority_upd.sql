@@ -13,5 +13,5 @@ BEGIN
         END    
 END;
 
-SELECT * FROM dbo.ticket
-EXEC dbo.sp_changePriority 3,1
+--SELECT * FROM dbo.ticket
+--EXEC dbo.sp_changePriority 3,1

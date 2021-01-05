@@ -266,11 +266,20 @@ SELECT * FROM ticket
 
 
 --Switch agents
-SELECT * FROM ticket WHERE status < 3
-SELECT * FROM staff
+SELECT * FROM ticket WHERE status < 3;
+SELECT * FROM staff;
+SELECT * FROM settings;
+SELECT * FROM customers;
 
-EXEC sp_createTicket 'Switchtest','try to switch agents',3,@category = 3,@select = 1;
+EXEC sp_createTicket 'Switchtest','try to switch agents',1,@category = 4,@select = 1;
 
-EXEC sp_switchAgent 15,@select = 1;
+EXEC sp_createTicket 'Ticket eröffnen43','warum geht der sauhund nd?',1,@category =1, @select = 1
 
-EXEC sp_unlockUser 2, @select = 1
+EXEC sp_switchAgent 1,@select = 1;
+
+EXEC sp_unlockUser 1, @select = 1
+
+EXEC sp_changeStatus 1,3,@select = 1;
+--INSERT INTO ticket_categories_staff (sid,tcid) VALUES(3,2)
+
+EXEC sp_loginUser 'mensi4801','hallo!!!!',@agent = 0,@select = 1;

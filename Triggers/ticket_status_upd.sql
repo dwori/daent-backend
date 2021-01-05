@@ -17,7 +17,7 @@ BEGIN
         BEGIN 
             UPDATE dbo.ticket
             SET updated_at = SYSDATETIME()
-            WHERE id IN(SELECT DISTINCT ID FROM Inserted) AND status != 3
+            WHERE id IN(SELECT DISTINCT ID FROM Inserted) AND status <> 3
         END      
     IF UPDATE(status)  
         BEGIN     
@@ -41,7 +41,7 @@ BEGIN
 
 END;
 
-EXEC sp_changeStatus 
+/*EXEC sp_changeStatus 
 
 SELECT * FROM dbo.ticket
 
@@ -52,4 +52,4 @@ UPDATE dbo.ticket
 SET status = 3
 WHERE id = 3;
 
-exec sp_help 'dbo.ticket'
+exec sp_help 'dbo.ticket'*/
