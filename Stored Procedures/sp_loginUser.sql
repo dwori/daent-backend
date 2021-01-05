@@ -17,12 +17,16 @@ CREATE OR ALTER PROCEDURE sp_loginUser
             DECLARE @salt varchar(10) = '#sA1tyAF!?'
             DECLARE @hash varchar(128) = CONVERT(varchar(128), HASHBYTES('SHA2_512', @password + @salt), 2)
             DECLARE @actual_hash varchar(128)
+            DECLARE @locked bit
             IF @agent = 0
             BEGIN
                 SELECT @actual_hash = passwordhash,
-				@errorCode = id
+				@errorCode = id,
+                @locked = locked
 			    FROM dbo.customers
 			    WHERE username = @username
+                IF @locked = 1
+                    THROW 50005, 'login: ur account is locked',1;
 
                 IF @errorCode IS NULL
                     THROW 50001, 'login: WRONG USERNAME', 1;

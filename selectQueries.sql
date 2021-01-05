@@ -16,7 +16,8 @@ email,
 phone,
 last_login,
 created_at,
-failed_logins
+failed_logins,
+locked
 from customers c
 inner join salutations s on c.salutation = s.id
 inner join customer_addresses ca ON c.id = ca.cid
@@ -55,7 +56,8 @@ inner join salutations s on st.salutation = s.id
 
 
 
-
+select * from ticket t
+inner join staff st on t.agent = st.id
 
 -- ticket join select
 select t.id,

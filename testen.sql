@@ -273,3 +273,4 @@ EXEC sp_createTicket 'Switchtest','try to switch agents',3,@category = 3,@select
 
 EXEC sp_switchAgent 15,@select = 1;
 
+EXEC sp_unlockUser 2, @select = 1

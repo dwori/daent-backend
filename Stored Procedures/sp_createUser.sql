@@ -102,7 +102,7 @@ CREATE OR ALTER PROCEDURE sp_createUser
                 END
 
                 BEGIN TRANSACTION
-                    INSERT INTO dbo.customers (username,passwordhash,firstname,lastname,salutation,email,phone) VALUES (@username,@hash,@firstname,@lastname,@salutation,@email,@phone)
+                    INSERT INTO dbo.customers (username,passwordhash,firstname,lastname,salutation,email,phone,locked) VALUES (@username,@hash,@firstname,@lastname,@salutation,@email,@phone,0)
                     SET @user_id = SCOPE_IDENTITY()
                     PRINT @user_id
 

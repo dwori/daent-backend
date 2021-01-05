@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS ticket
 DROP TABLE IF EXISTS ticket_statuses
 DROP TABLE IF EXISTS ticket_priorities
 DROP TABLE IF EXISTS ticket_categories
+DROP TABLE IF EXISTS settings
 
 
 
@@ -40,6 +41,7 @@ CREATE TABLE customers (
     last_login datetime2(0),
     created_at datetime2(0) CONSTRAINT DF_customer_created_at DEFAULT SYSDATETIME(),
     failed_logins tinyint NOT NULL CONSTRAINT DF_customer_failed_logins DEFAULT 0,
+    locked BIT NOT NULL,
     salutation TINYINT NOT NULL,
     CONSTRAINT PK_customers PRIMARY KEY (id),
     CONSTRAINT FK_customers_salutations FOREIGN KEY(salutation) REFERENCES salutations(id),
