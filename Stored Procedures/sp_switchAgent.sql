@@ -29,7 +29,8 @@ CREATE OR ALTER PROCEDURE sp_switchAgent
                     WHERE tcid = @category
                     )AND ticket_queue < @maxQueue AND id <> @oldAgent
                     ORDER BY ticket_queue ASC)
-            
+            IF @newAgent IS NULL
+                THROW 51234, 'No Agent available to switch ticket with!',1;
             --Neuen Agenten eintragen ins Ticket
             UPDATE ticket
             SET agent = @newAgent

@@ -275,7 +275,7 @@ EXEC sp_createTicket 'Switchtest','try to switch agents',1,@category = 4,@select
 
 EXEC sp_createTicket 'Ticket eröffnen43','warum geht der sauhund nd?',1,@category =1, @select = 1
 
-EXEC sp_switchAgent 1,@select = 1;
+EXEC sp_switchAgent 7,@select = 1;
 
 EXEC sp_unlockUser 1, @select = 1
 
@@ -283,3 +283,7 @@ EXEC sp_changeStatus 1,3,@select = 1;
 --INSERT INTO ticket_categories_staff (sid,tcid) VALUES(3,2)
 
 EXEC sp_loginUser 'mensi4801','hallo!!!!',@agent = 0,@select = 1;
+
+
+-- Absence Prozedur
+EXEC sp_absence 1,'20210106 12:30:00.0','20210107 12:30:00.0', @select = 1;
