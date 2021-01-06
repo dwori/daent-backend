@@ -65,7 +65,10 @@ CREATE OR ALTER PROCEDURE sp_switchAgent
                 SET @errorCode = -99
                 
             IF @@trancount = 1
+            Begin
+                PRINT 'sp_switch_error'
                 ROLLBACK
+            END
         END CATCH
 
         IF @select = 1

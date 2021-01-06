@@ -35,21 +35,10 @@ BEGIN
     COMMIT TRANSACTION
     END TRY
     BEGIN CATCH
+        PRINT 'TEST'
         ROLLBACK
     END CATCH
 
 
 END;
 
-/*EXEC sp_changeStatus 
-
-SELECT * FROM dbo.ticket
-
-E
-
-
-UPDATE dbo.ticket
-SET status = 3
-WHERE id = 3;
-
-exec sp_help 'dbo.ticket'*/

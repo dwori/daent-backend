@@ -16,7 +16,7 @@ BEGIN
 			INNER JOIN deleted d ON i.id = d.id
 			WHERE i.status < d.status) > 0
 		BEGIN
-            --PRINT '-------------------ALARM--------------------'
+            PRINT '-------------------ALARM--------------------'
 			ROLLBACK;
 			THROW 50871, 'Ungültiger Statusübergang', 1;
 		END

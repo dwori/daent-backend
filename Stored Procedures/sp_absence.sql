@@ -18,23 +18,28 @@ CREATE OR ALTER PROCEDURE sp_absence
 
     BEGIN TRY
         BEGIN TRANSACTION;
-
         --Hinzufügen von Start- und Endzeit 
         UPDATE dbo.staff
         SET absence_begin = @startDate
         WHERE id = @agent;
+        PRINT 'BEGIN WORKS'
 
         --Endzeit nur eintragen wenn sie nicht NULL ist
+        UPDATE dbo.staff
+        SET absence_end = @endDate
+        WHERE id = @agent;
+        PRINT 'END WORKS'
+
         IF @endDate IS NOT NULL
         BEGIN
-            UPDATE dbo.staff
-            SET absence_end = @endDate
-            WHERE id = @agent;
-
-            Set @absence = DATEDIFF(SECOND,@endDate,@startDate) --Verbessern
+            Set @absence = DATEDIFF(DAY,@startDate,@endDate)
+        END
+        ELSE
+        BEGIN
+            SET @absence = NULL
         END
             SET @errorCode = @agent
-
+        PRINT 'OIS WORKED'
         COMMIT TRANSACTION;
     END TRY
     BEGIN CATCH
@@ -47,11 +52,14 @@ CREATE OR ALTER PROCEDURE sp_absence
             ELSE
                 SET @errorCode = -99
                 
-            IF @@trancount = 1
+            IF @@trancount = 3
+            BEGIN
+                PRINT 'sp_absence_error'
                 ROLLBACK
+            END
         END CATCH
 
         IF @select = 1
-           SELECT @errorCode AS Agent, @absence AS absence, @errorMsg AS errorMessage, @errorLine AS errorLine
+           SELECT @errorCode AS Agent, @absence AS absence_days, @errorMsg AS errorMessage, @errorLine AS errorLine
 END
 GO

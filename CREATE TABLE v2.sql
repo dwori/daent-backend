@@ -148,6 +148,8 @@ CREATE TABLE staff (
     failed_logins tinyint NOT NULL CONSTRAINT DF_staff_failed_logins DEFAULT 0,
     address INT,
     salutation TINYINT NOT NULL,
+    absence_begin datetime2(0),
+    absence_end datetime2(0),
     CONSTRAINT PK_staff PRIMARY KEY (id),
     CONSTRAINT FK_staff_salutations FOREIGN KEY(salutation) REFERENCES salutations (id),
     CONSTRAINT UK_staff_username UNIQUE (username),
