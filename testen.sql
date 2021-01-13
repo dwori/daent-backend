@@ -287,7 +287,7 @@ EXEC sp_loginUser 'mensi4801','hallo!!!!',@agent = 0,@select = 1;
 
 -- Absence Prozedur
 --4 Tage
-EXEC sp_absence 2,'20210106 12:30:00','20210110 12:30:00', @select = 1;
+EXEC sp_absence 3,'20210106 12:30:00','20210110 12:30:00', @select = 1;
 -- Ohne Ende
 EXEC sp_absence 2,'20210106 12:30:00', @select = 1;
 -- Urlaub ENDE

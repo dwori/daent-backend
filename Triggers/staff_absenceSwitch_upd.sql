@@ -19,6 +19,8 @@ BEGIN
         WHERE id IN(SELECT DISTINCT ID FROM Inserted) 
         IF ((DATEDIFF(DAY,@absence_begin,@absence_end)) > 3) OR ((@absence_end IS NULL) AND (@absence_begin IS NOT NULL))
             BEGIN
+                DECLARE @errormsg VARCHAR(500)
+                DECLARE @errorcode INT
                 DECLARE ticket_cursor CURSOR LOCAL STATIC
                 FOR                 
                 SELECT id                
@@ -29,13 +31,15 @@ BEGIN
                 WHILE @@FETCH_STATUS = 0
                     BEGIN
                         PRINT 'Cursor running'
-                        EXEC sp_switchAgent @ticket_id = @t_id
+                        EXEC sp_switchAgent @ticket_id = @t_id, @errorCode = @errorcode OUTPUT,@errorMsg = @errormsg OUTPUT
+                        IF @errorcode < 0
+                            THROW 50935,@errormsg,1;
                         FETCH NEXT FROM ticket_cursor INTO @t_id 
                     END
                 CLOSE ticket_cursor
                 DEALLOCATE ticket_cursor
                 UPDATE dbo.staff
-                    SET ticket_queue = (SELECT value FROM dbo.settings WHERE id = 1)
+                    SET ticket_queue = 99
                     WHERE id = @agent
                 PRINT 'Cursor fertig'
             END

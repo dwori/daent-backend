@@ -9,13 +9,11 @@ CREATE OR ALTER PROCEDURE sp_absence
     @errorMsg VARCHAR(500) = NULL OUTPUT,
     @select bit = 0
 
-    AS
+    AS 
     BEGIN
         SET NOCOUNT ON;
         --Variablen
         DECLARE @absence INT
-
-
     BEGIN TRY
         BEGIN TRANSACTION;
         --Hinzufügen von Start- und Endzeit 
