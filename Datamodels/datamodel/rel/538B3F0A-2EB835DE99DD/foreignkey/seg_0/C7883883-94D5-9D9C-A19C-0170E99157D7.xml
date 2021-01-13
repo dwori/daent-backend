@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="C7883883-94D5-9D9C-A19C-0170E99157D7" containerWithKeyObject="3F37ED6E-5F60-6E58-2A4F-D80F08DFB945" localFKIndex="33724A25-6B26-5D4C-65C9-3C619161A462" name="ticket_priorities_FK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2021-01-13 09:27:22 UTC</createdTime>
+<generatorID>342900ED-2801-85E7-DE18-9B76966E3C1C</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<referredTableLongName>priorities</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>850782A8-1B77-79ED-BA61-6DF66AE3A73B</referredTableID>
+<keyObject>A3F467D5-1355-FADD-01D9-1D393CDA1220</keyObject>
+<referredKeyID>A3F467D5-1355-FADD-01D9-1D393CDA1220</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>tp_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

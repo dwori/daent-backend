@@ -159,6 +159,10 @@
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <bounds x="603" y="764" width="182" height="105"/>
 </OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="345B2C1E-99B5-7F21-5966-99ADC543A654" otype="Entity" vid="3E2F1740-49DE-9135-C7E9-FAF9D8CA9481">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="1272" y="465" width="192" height="87"/>
+</OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="466EB320-EDF4-E946-CE35-CA5C1445664A" otype="Entity" vid="AD888BC7-9E2F-9EDF-5F3F-309EBDEBFEDC">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <bounds x="668" y="276" width="214" height="141"/>

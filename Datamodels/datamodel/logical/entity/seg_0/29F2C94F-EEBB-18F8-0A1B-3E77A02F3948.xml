@@ -4,7 +4,7 @@
 <createdTime>2020-10-27 12:08:23 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -20,7 +20,7 @@
 <createdTime>2020-10-27 12:08:37 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -32,7 +32,7 @@
 <createdTime>2020-10-27 12:12:02 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -45,7 +45,7 @@
 <createdTime>2020-10-27 12:08:54 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -59,7 +59,7 @@
 <createdTime>2020-10-27 12:17:45 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -71,7 +71,7 @@
 <createdTime>2020-10-27 12:17:53 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -84,39 +84,12 @@
 <createdTime>2020-10-27 12:18:01 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="duration" id="A92D32FF-47FB-95E1-468D-14EE5ED94260">
-<createdBy>AK-47u</createdBy>
-<createdTime>2020-11-17 15:06:25 UTC</createdTime>
-<ownerDesignName>datamodel</ownerDesignName>
-<engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="ts_id" id="2A114FAB-D1F0-0CD0-2A10-7EB4F00DB80D">
-<createdBy>AK-47u</createdBy>
-<createdTime>2020-10-27 12:24:00 UTC</createdTime>
-<generatorID>4CCB40A3-4199-41FB-E297-3429BF63341F</generatorID>
-<ownerDesignName>datamodel</ownerDesignName>
-<engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
-</engineerTo>
-<referedAttribute>DF8DE7AD-C1E5-40DB-C364-530880195C25</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT042</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="st_id" id="5F556747-DAF3-9D7A-CB50-C30173F6C517">
@@ -125,7 +98,7 @@
 <generatorID>212A16A2-BE54-13C9-2574-0D62D0D45E54</generatorID>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <referedAttribute>D953D901-03A0-3D24-5D9F-BE6D944D7341</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -139,7 +112,7 @@
 <generatorID>5F946A39-13E2-7986-18A2-85405B58D992</generatorID>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <referedAttribute>4F31EA7C-CCF9-D55A-6366-A3A75A309BAE</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -153,7 +126,7 @@
 <generatorID>C1D92F30-B3B5-9F5D-8C13-55D0CDBAE152</generatorID>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <referedAttribute>6C02C988-2915-8D43-37F4-7407B21CC2FE</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -167,12 +140,26 @@
 <generatorID>342900ED-2801-85E7-DE18-9B76966E3C1C</generatorID>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <referedAttribute>50AC0C75-7CCF-A80F-F53A-89680A3F7F66</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT042</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ts_id" id="49BE9FE0-C561-0B3E-A377-9E10227F7E0F">
+<createdBy>AK-47u</createdBy>
+<createdTime>2021-01-13 09:21:48 UTC</createdTime>
+<generatorID>4CCB40A3-4199-41FB-E297-3429BF63341F</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
+</engineerTo>
+<referedAttribute>DF8DE7AD-C1E5-40DB-C364-530880195C25</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -182,7 +169,7 @@
 <createdTime>2020-10-27 12:08:45 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

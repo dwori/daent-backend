@@ -4,7 +4,7 @@
 <createdTime>2020-10-27 12:17:22 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -20,7 +20,7 @@
 <createdTime>2020-10-27 12:22:37 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -32,7 +32,7 @@
 <createdTime>2020-11-17 14:16:03 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -45,7 +45,7 @@
 <createdTime>2020-12-02 19:55:12 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -58,7 +58,7 @@
 <createdTime>2020-10-27 12:55:30 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -70,7 +70,7 @@
 <createdTime>2020-10-27 12:22:42 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -83,7 +83,7 @@
 <createdTime>2020-10-27 12:31:49 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <deprecated>true</deprecated>
 <use>0</use>
@@ -94,7 +94,7 @@
 <createdTime>2020-10-27 12:37:38 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <deprecated>true</deprecated>
 <nullsAllowed>true</nullsAllowed>
@@ -106,7 +106,7 @@
 <createdTime>2020-10-27 12:36:08 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -119,7 +119,7 @@
 <createdTime>2020-10-27 12:36:22 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -132,7 +132,7 @@
 <createdTime>2020-12-02 19:55:48 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -145,7 +145,7 @@
 <createdTime>2020-12-02 20:31:42 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -158,12 +158,24 @@
 <createdTime>2020-12-02 20:31:49 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="locked" id="F5D5A04C-B89A-6016-D900-6BF936280A24">
+<createdBy>AK-47u</createdBy>
+<createdTime>2021-01-13 09:19:20 UTC</createdTime>
+<ownerDesignName>datamodel</ownerDesignName>
+<engineerTo>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT034</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="s_id" id="A5C32F67-6FB9-9671-758A-F36CE1E6F9A1">
@@ -172,7 +184,7 @@
 <generatorID>9A523851-0354-85B3-729A-4E4B49D11FA5</generatorID>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <referedAttribute>EFCC13B6-CF92-B179-C03B-ACB9EEFB36E3</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -187,7 +199,7 @@
 <createdTime>2020-10-27 12:22:41 UTC</createdTime>
 <ownerDesignName>datamodel</ownerDesignName>
 <engineerTo>
-<item key="185B771E-F71E-7036-9541-49C765EDE451" value="true"/>
+<item key="538B3F0A-67D1-BC71-A337-2EB835DE99DD" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

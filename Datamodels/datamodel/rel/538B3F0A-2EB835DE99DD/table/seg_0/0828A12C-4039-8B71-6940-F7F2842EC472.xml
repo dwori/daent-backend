@@ -1,0 +1,90 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0828A12C-4039-8B71-6940-F7F2842EC472" name="customer_addresses">
+<createdBy>AK-47u</createdBy>
+<createdTime>2021-01-13 09:27:22 UTC</createdTime>
+<generatorID>18E0EDEB-8595-F4D2-1F49-F96E870DB26D</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ship_bill_boolean" id="30BA2871-DAB3-7A1A-06EF-BF7E33F0CC2F">
+<createdBy>AK-47u</createdBy>
+<createdTime>2021-01-13 09:27:22 UTC</createdTime>
+<generatorID>39EF2062-7A6F-200C-DB16-4E918AB566BF</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT034</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="adresses_a_id" id="A85AE0D4-20F9-BA5C-1C71-1592978EC9DE">
+<createdBy>AK-47u</createdBy>
+<createdTime>2021-01-13 09:27:22 UTC</createdTime>
+<generatorID>FEB777D8-77F5-B1A2-DFCE-57829FB1B693</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E390A57D-6EEC-B21F-6289-05FE529B75E1" referredColumn="6FEED8F9-FFBF-AEC2-F25D-BAAD4E6E6A8D"/>
+</associations>
+</Column>
+<Column name="customers_c_id" id="5F5DC606-32DF-E585-9355-864926C425AA">
+<createdBy>AK-47u</createdBy>
+<createdTime>2021-01-13 09:27:22 UTC</createdTime>
+<generatorID>ADC86022-83BF-5C74-C5EE-F5908CC5FFFC</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="823473DF-D812-7639-C7EC-34D0A88E7868" referredColumn="3713BFD4-4B17-A67D-8D91-0CC47B7AFD55"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="46EE28A1-EC3A-6B4B-23B6-622E1FA09EA4" name="customer_addresses_PK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2021-01-13 09:27:22 UTC</createdTime>
+<generatorID>0AC19648-82E5-B4AA-CC17-4701FE419F9D</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A85AE0D4-20F9-BA5C-1C71-1592978EC9DE"/>
+<colUsage columnID="5F5DC606-32DF-E585-9355-864926C425AA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="384BC1A2-F3B7-9546-050C-14C3FDB744E6" name="customer_addresses_adresses_FK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2021-01-13 09:27:22 UTC</createdTime>
+<generatorID>E85A745E-3FA2-19A2-1999-BF5275993743</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A85AE0D4-20F9-BA5C-1C71-1592978EC9DE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="11DBEA5C-924A-E2F5-9C43-CCA6A99AC6BC" name="customer_addresses_customers_FK">
+<createdBy>AK-47u</createdBy>
+<createdTime>2021-01-13 09:27:22 UTC</createdTime>
+<generatorID>A40D32AF-3B1F-58BC-739B-CE5919057860</generatorID>
+<ownerDesignName>datamodel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5F5DC606-32DF-E585-9355-864926C425AA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
