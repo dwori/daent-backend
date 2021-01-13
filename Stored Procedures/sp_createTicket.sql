@@ -11,28 +11,29 @@ CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
     @subject VARCHAR(100),
     @content VARCHAR(255),
     @customer INT,
-    @status INT = 1,
     @category TINYINT,
-    @priority TINYINT = 1,
-    
-    @errorCode int = NULL OUTPUT,  -- USER ID is returned if procedures gets executed without error
+    -- Debug mode
+    @errorCode int = NULL OUTPUT,  -- TICKET ID is returned if procedures gets executed without error
     @errorLine int = NULL OUTPUT,
     @errorMsg VARCHAR(500) = NULL OUTPUT,
-    @select bit = 0
+    @select bit = 0 --used to activate Debugging mode
 
     AS
     BEGIN
         SET NOCOUNT ON;
         --Variables
+        DECLARE @status INT = 1
+        DECLARE @priority TINYINT = 1
         DECLARE @agent INT
         DECLARE @maxQueue INT 
         SET @maxQueue = (SELECT value FROM dbo.settings WHERE id = 1)
 
 
         BEGIN TRY
+            BEGIN TRANSACTION;
             IF (SELECT COUNT(*) FROM dbo.ticket_categories WHERE id = @category) = 0
             AND (SELECT COUNT(*) FROM dbo.ticket_categories_staff WHERE tcid = @category) = 0
-                THROW 50004, 'this category does not exist', 1;
+                THROW 50004, 'This category does not exist', 1;
             --Den Agenten mit der geringsten ticket_queue ermitteln und @agent hizufügen
             SET @agent = (
                 SELECT TOP 1 id FROM dbo.staff WHERE id IN(
@@ -48,14 +49,14 @@ CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
 
             INSERT INTO dbo.ticket(subject,ticket_content,customer_number,agent,status,category,priority)
             VALUES(@subject,@content,@customer,@agent,@status,@category,@priority)
-            SET @errorCode = SCOPE_IDENTITY();
+            SET @errorCode = SCOPE_IDENTITY(); -- Set @errorcode to ticket_id, to return it later
 
-            IF ERROR_MESSAGE() IS NULL
-            BEGIN
-                UPDATE dbo.staff
-                SET ticket_queue = ISNULL(ticket_queue,0) + 1
-                WHERE id = @agent;
-            END
+            --Update the agents ticket_queue
+            UPDATE dbo.staff
+            SET ticket_queue = ISNULL(ticket_queue,0) + 1
+            WHERE id = @agent;
+            
+            COMMIT;
         END TRY
         BEGIN CATCH
             
@@ -65,14 +66,12 @@ CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
                 SET @errorCode = -1
             ELSE
                 SET @errorCode = -99
-
+            ROLLBACK;
         END CATCH
         IF @select = 1
             SELECT @errorCode AS resultCode, @errorMsg AS errorMessage, @errorLine AS errorLine
     END
 GO
 
-INSERT INTO dbo.ticket_categories_staff (sid,tcid) VALUES (1,4)
 
-
-EXECUTE sp_createTicket 'My first Problem','olls oasch', 1, @category = 56, @select = 1
+EXECUTE sp_createTicket 'My first Problem','olls oasch', 1, @category = 4, @select = 1
