@@ -3,41 +3,34 @@ CREATE OR ALTER PROCEDURE sp_absence
     @agent INT,
     @startDate DATETIME2,
     @endDate DATETIME2 = NULL,
-    --Debugmode
-    @errorCode int = NULL OUTPUT,  -- USER ID is returned if procedures gets executed without error
-    @errorLine int = NULL OUTPUT,
-    @errorMsg VARCHAR(500) = NULL OUTPUT,
-    @select bit = 0
+    --Debug
+    @errorCode INT = NULL OUTPUT,  -- USER ID is returned if procedures gets executed without error
+    @errorLine INT = NULL OUTPUT, -- returns exact line, where the error occured
+    @errorMsg VARCHAR(500) = NULL OUTPUT, --returns the error message from the system or a predefined error message
+    @select BIT = 0
 
     AS 
     BEGIN
         SET NOCOUNT ON;
-        --Variablen
-        DECLARE @absence INT
+        -- variables
+        DECLARE @absence INT = NULL
+
     BEGIN TRY
         BEGIN TRANSACTION;
-        --Hinzufügen von Start- und Endzeit 
+        --Add starttime & endtime
         UPDATE dbo.staff
         SET absence_begin = @startDate
         WHERE id = @agent;
-        PRINT 'BEGIN WORKS'
 
-        --Endzeit nur eintragen wenn sie nicht NULL ist
         UPDATE dbo.staff
         SET absence_end = @endDate
         WHERE id = @agent;
-        PRINT 'END WORKS'
-
+        --If the endtime is not null, the length of the absence in days will be stored in  @absence. Else it´s set to null.
         IF @endDate IS NOT NULL
-        BEGIN
-            Set @absence = DATEDIFF(DAY,@startDate,@endDate)
-        END
-        ELSE
-        BEGIN
-            SET @absence = NULL
-        END
-            SET @errorCode = @agent
-        PRINT 'OIS WORKED'
+            SET @absence = DATEDIFF(DAY,@startDate,@endDate);
+
+        --Setting errorcode to the agent´s is who is absent
+        SET @errorCode = @agent;
         COMMIT TRANSACTION;
     END TRY
     BEGIN CATCH
@@ -51,13 +44,16 @@ CREATE OR ALTER PROCEDURE sp_absence
                 SET @errorCode = -99
                 
             IF @@trancount = 3
+                ROLLBACK;
+    END CATCH
+    
+        IF (@select = 1)
             BEGIN
-                PRINT 'sp_absence_error'
-                ROLLBACK
+                IF (@errorCode > 0)
+                    SELECT @errorCode AS Agent, @absence AS absence_days;
+                ELSE
+                    SELECT @errorCode AS errorCode, @errorMsg AS errorMessage, @errorLine AS errorLine;
             END
-        END CATCH
-
-        IF @select = 1
-           SELECT @errorCode AS Agent, @absence AS absence_days, @errorMsg AS errorMessage, @errorLine AS errorLine
+           
 END
 GO

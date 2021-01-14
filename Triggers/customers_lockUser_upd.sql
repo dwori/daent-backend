@@ -5,7 +5,9 @@ FOR update
 AS
 BEGIN
     SET NOCOUNT ON;
+    --If there are more than 3 failed logins the account gets locked.
     IF UPDATE(failed_logins)
+
     IF (SELECT failed_logins from inserted where failed_logins = (SELECT value FROM settings where id = 4)) > 1
     BEGIN
         UPDATE dbo.customers SET locked = 1
