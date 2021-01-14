@@ -287,9 +287,20 @@ EXEC sp_loginUser 'mensi4801','hallo!!!!',@agent = 0,@select = 1;
 
 -- Absence Prozedur
 --4 Tage
-EXEC sp_absence 3,'20210106 12:30:00','20210110 12:30:00', @select = 1;
+EXEC sp_absence 5,'20210114 12:30:00','20210119 12:30:00', @select = 1;
 -- Ohne Ende
 EXEC sp_absence 2,'20210106 12:30:00', @select = 1;
 -- Urlaub ENDE
 EXEC sp_absence 2,NULL, NULL, @select = 1;
 
+SELECT * FROM ticket 
+SELECT * FROM customers;
+SELECT * FROM staff;
+SELECT * FROM ticket_categories_staff;
+UPDATE staff SET phone = '06648407221', firstname = 'Carl' where id =5
+
+EXEC sp_changePriority 6,3, @select= 1;
+
+EXEC sp_changeStatus 4,3,@select =1;
+
+SELECT * FROM settings

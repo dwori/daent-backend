@@ -12,11 +12,12 @@ CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
     @content VARCHAR(255),
     @customer INT,
     @category TINYINT,
-    -- Debug mode
-    @errorCode int = NULL OUTPUT,  -- TICKET ID is returned if procedures gets executed without error
-    @errorLine int = NULL OUTPUT,
-    @errorMsg VARCHAR(500) = NULL OUTPUT,
-    @select bit = 0 --used to activate Debugging mode
+
+    --Debug
+    @errorCode int = NULL OUTPUT,  -- ticket ID is returned if procedures gets executed without error
+    @errorLine int = NULL OUTPUT, -- returns exact line, where the error occured
+    @errorMsg VARCHAR(500) = NULL OUTPUT, --returns the error message from the system or a predefined error message
+    @select BIT = 0
 
     AS
     BEGIN
@@ -26,15 +27,21 @@ CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
         DECLARE @priority TINYINT = 1
         DECLARE @agent INT
         DECLARE @maxQueue INT 
-        SET @maxQueue = (SELECT value FROM dbo.settings WHERE id = 1)
+            SET @maxQueue = (SELECT value FROM dbo.settings WHERE id = 1)
 
 
         BEGIN TRY
             BEGIN TRANSACTION;
+
+            --Check if category does exist and if an agent holds that category
             IF (SELECT COUNT(*) FROM dbo.ticket_categories WHERE id = @category) = 0
             AND (SELECT COUNT(*) FROM dbo.ticket_categories_staff WHERE tcid = @category) = 0
                 THROW 50004, 'This category does not exist', 1;
-            --Den Agenten mit der geringsten ticket_queue ermitteln und @agent hizufügen
+
+            /*
+             * Set @agent to the agent with the lowest ticket_queue who hold the provided category and
+             * whose ticket_queue is below the maximum
+            */
             SET @agent = (
                 SELECT TOP 1 id FROM dbo.staff WHERE id IN(
                     SELECT sid 
@@ -42,36 +49,40 @@ CREATE OR ALTER   PROCEDURE dbo.sp_createTicket
                     WHERE tcid = @category
                     ) AND ticket_queue < @maxQueue
                 ORDER BY ticket_queue ASC
-            )
-            --ticket queue für diesen Agenten um 1 erhöhen
-            IF @agent IS NULL
+            );
+
+            --If there are no agents available throw an error
+            IF (@agent IS NULL)
                 THROW 50089,'No agent available right now!',1;
-
+            --Insert data into dbo.ticket
             INSERT INTO dbo.ticket(subject,ticket_content,customer_number,agent,status,category,priority)
-            VALUES(@subject,@content,@customer,@agent,@status,@category,@priority)
-            SET @errorCode = SCOPE_IDENTITY(); -- Set @errorcode to ticket_id, to return it later
+            VALUES(@subject,@content,@customer,@agent,@status,@category,@priority);
 
-            --Update the agents ticket_queue
+            SET @errorCode = SCOPE_IDENTITY(); 
+
+            --Increase the agent´s ticket_queue
             UPDATE dbo.staff
             SET ticket_queue = ISNULL(ticket_queue,0) + 1
             WHERE id = @agent;
             
             COMMIT;
         END TRY
-        BEGIN CATCH
-            
+        BEGIN CATCH  
             SET @errorLine = ERROR_LINE()
             SET @errorMsg = ERROR_MESSAGE()
             IF ERROR_MESSAGE() like '%FK_ticket_customer%'
-                SET @errorCode = -1
+                SET @errorCode = -1;
             ELSE
-                SET @errorCode = -99
+                SET @errorCode = -99;
             ROLLBACK;
         END CATCH
-        IF @select = 1
-            SELECT @errorCode AS resultCode, @errorMsg AS errorMessage, @errorLine AS errorLine
-    END
+
+        IF (@select = 1)
+            BEGIN
+                IF (@errorCode > 0)
+                    SELECT @errorCode AS ticket_id;
+                ELSE
+                    SELECT @errorCode AS errorCode, @errorMsg AS errorMessage, @errorLine AS errorLine;
+            END
+END
 GO
-
-
-EXECUTE sp_createTicket 'My first Problem','olls oasch', 1, @category = 4, @select = 1

@@ -1,28 +1,28 @@
 GO
 CREATE OR ALTER PROCEDURE sp_loginUser
-  
-  @username VARCHAR(50),
-  @password VARCHAR(128),
-  @agent BIT = 0,
+    @username VARCHAR(50),
+    @password VARCHAR(128),
+    @agent BIT = 0,
 
-  --Error Handeling
-  @errorCode int = NULL OUTPUT,  -- USER ID is returned if procedures gets executed without error
-  @errorLine int = NULL OUTPUT,
-  @errorMsg VARCHAR(500) = NULL OUTPUT,
-  @select bit = 0
+    --Debug
+    @errorCode int = NULL OUTPUT,  -- ticket ID is returned if procedures gets executed without error
+    @errorLine int = NULL OUTPUT, -- returns exact line, where the error occured
+    @errorMsg VARCHAR(500) = NULL OUTPUT, --returns the error message from the system or a predefined error message
+    @select BIT = 0
 
     AS
     BEGIN
+        SET NOCOUNT ON;
         BEGIN TRY
-            DECLARE @salt varchar(10) = '#sA1tyAF!?'
+            --Variables
+            DECLARE @salt varchar(10) = (SELECT value FROM settings WHERE id= 2)
             DECLARE @hash varchar(128) = CONVERT(varchar(128), HASHBYTES('SHA2_512', @password + @salt), 2)
             DECLARE @actual_hash varchar(128)
             DECLARE @locked bit
-            IF @agent = 0
+
+            IF (@agent = 0)
             BEGIN
-                SELECT @actual_hash = passwordhash,
-				@errorCode = id,
-                @locked = locked
+                SELECT @actual_hash = passwordhash, @errorCode = id, @locked = locked
 			    FROM dbo.customers
 			    WHERE username = @username
                 IF @locked = 1
@@ -79,7 +79,12 @@ CREATE OR ALTER PROCEDURE sp_loginUser
 
         END CATCH
 
-        IF @select = 1
-            SELECT @errorCode AS resultCode, @errorMsg AS errorMessage, @errorLine AS errorLine
+        IF (@select = 1)
+            BEGIN
+                IF (@errorCode > 0)
+                    SELECT @errorCode AS account_id;
+                ELSE
+                    SELECT @errorCode AS errorCode, @errorMsg AS errorMessage, @errorLine AS errorLine;
+            END
     END
 GO
