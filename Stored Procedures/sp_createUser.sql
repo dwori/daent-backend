@@ -163,7 +163,7 @@ CREATE OR ALTER PROCEDURE sp_createUser
                                 END
                         END
 
-                COMMIT TRANSACTION;
+                
             END
         COMMIT TRANSACTION
         END TRY
