@@ -26,6 +26,7 @@ CREATE OR ALTER PROCEDURE sp_createUser
     BEGIN
         SET NOCOUNT ON;
         BEGIN TRY
+            BEGIN TRANSACTION
         
             DECLARE @a1_length int
             DECLARE @a2_length int
@@ -59,8 +60,7 @@ CREATE OR ALTER PROCEDURE sp_createUser
             IF @phone LIKE '%_%' 
                     SET @phone = REPLACE(@phone, ' ', '')
 
-            IF @phone LIKE '0%' 
-                    SET @phone = STUFF(@phone, CHARINDEX('0', @phone), LEN('0'), '+43')
+        
 
 
 
@@ -101,7 +101,7 @@ CREATE OR ALTER PROCEDURE sp_createUser
                     
                 END
 
-                BEGIN TRANSACTION
+                
                     INSERT INTO dbo.customers (username,passwordhash,firstname,lastname,salutation,email,phone,locked) VALUES (@username,@hash,@firstname,@lastname,@salutation,@email,@phone,0)
                     SET @user_id = SCOPE_IDENTITY()
                     PRINT @user_id
@@ -118,14 +118,13 @@ CREATE OR ALTER PROCEDURE sp_createUser
 
                     INSERT INTO dbo.customer_addresses (aid,cid,ship_bill_boolean) VALUES (@address_id2,@user_id,1)
                     END
-                COMMIT TRANSACTION
+                
             END
 
 
 
             IF @agent = 1 
             BEGIN	
-                BEGIN TRANSACTION
                     INSERT INTO dbo.addresses (streetname,postalcode,cityname,country) VALUES (@streetname1,@postalcode1 ,@cityname1,@country1)
                     SET @address_id1 = SCOPE_IDENTITY()
 
@@ -155,9 +154,8 @@ CREATE OR ALTER PROCEDURE sp_createUser
                                     INSERT INTO dbo.ticket_categories_staff (sid,tcid) VALUES (@user_id,@category_id)
                                 END
                         END
-                COMMIT TRANSACTION
             END
-        
+        COMMIT TRANSACTION
         END TRY
         BEGIN CATCH
             ROLLBACK

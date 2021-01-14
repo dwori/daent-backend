@@ -6,10 +6,11 @@ AS
 BEGIN
     SET NOCOUNT ON;
     IF UPDATE(failed_logins)
-    IF (SELECT failed_logins from inserted where failed_logins > 3) > 1
+    IF (SELECT failed_logins from inserted where failed_logins = (SELECT value FROM settings where id = 4)) > 1
     BEGIN
         UPDATE dbo.customers SET locked = 1
         WHERE id IN(SELECT DISTINCT ID FROM Inserted);
     END
 END
 Go
+
