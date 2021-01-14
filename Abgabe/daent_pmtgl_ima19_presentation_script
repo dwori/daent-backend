@@ -1,0 +1,236 @@
+
+-- STAFF / AGENT ACCOUNTS
+select username, tc.name from ticket_categories_staff x
+join staff s on x.sid = s.id
+join ticket_categories tc on x.tcid = tc.id
+select * from addresses a
+join countries c on a.country = c.iso
+
+select * from staff
+
+
+EXECUTE dbo.sp_CreateUser
+   @username = 'mensur480'
+  ,@password = 'Mensur123#'
+  ,@firstname = 'Mensur'
+  ,@lastname = 'Bukvarevic'
+  ,@salutation = 1
+  ,@address1 = 'Reslfeldtstraße 10,4451,Garsten,AT'
+  ,@email = 'MBUKVAREVIC@GMAIL.COM'
+  ,@categories = 'Customer Services'
+  ,@phone = '06764604331'
+  ,@agent = 1
+  ,@select = 1
+GO
+
+-- not complex enough
+EXECUTE dbo.sp_CreateUser
+   @username = 'mensur480'
+  ,@password = '!'
+  ,@firstname = 'Mensur'
+  ,@lastname = 'Bukvarevic'
+  ,@salutation = 1
+  ,@address1 = 'Reslfeldtstraße 10,4451,Garsten,AT'
+  ,@email = 'MBUKVAREVIC@GMAIL.COM'
+  ,@categories = 'Customer Services'
+  ,@phone = '06764604331'
+  ,@agent = 1
+  ,@select = 1
+GO
+EXEC sp_createUser
+ 'dominikk'
+ ,'hallo!!!!'
+ ,'Dominik'
+ ,'Kainz'
+ ,1 
+ ,@address1 ='Weinbergweg 4,9400,Wolfsberg,AT'
+ ,@email ='kainz.domi@gmail.com'
+ ,@categories = 'Technical,Infrastucture Support,Website'
+ ,@phone = '0 66410 62393'
+ ,@agent = 1
+ ,@select = 1
+GO
+EXEC sp_createUser
+ 'dwori10'
+ ,'Pa55w.rd!!'
+ ,'Lukas'
+ ,'Dworacek'
+ ,1 
+ ,@address1 ='Schererstraße 39b ,8052,Graz,AT'
+ ,@email ='lukas.dworacek@gmail.com'
+ ,@categories = 'Technical,Infrastucture Support,Website'
+ ,@phone = '0 66410 6111112393'
+ ,@agent = 1
+ ,@select = 1
+GO
+EXEC sp_createUser
+ 'contrrr'
+ ,'Pa555w.rd!!'
+ ,'Mr.'
+ ,'Controller'
+ ,1 
+ ,@address1 ='Kaiser Franz Joseph Platz 1,8010,Graz,AT'
+ ,@email ='controller@gmail.com'
+ ,@categories = 'Billing,VoIP,Customer Services'
+ ,@phone = '0 66412212393'
+ ,@agent = 1
+ ,@select = 1
+GO
+EXEC sp_createUser
+ 'chef121212'
+ ,'Pa555tw.rd!!'
+ ,'Maximilian'
+ ,'Chef'
+ ,1 
+ ,@address1 ='Gries Platz 20,8020,Graz,AT'
+ ,@email ='maxchef@gmail.com'
+ ,@categories = 'Billing,VoIP,Server'
+ ,@phone = '0 66412212393'
+ ,@agent = 1
+ ,@select = 1
+GO
+
+-- LOGIN
+
+EXEC sp_loginUser
+    'dwori10'  -- must be unique
+    ,'Pa55w.rd!!'
+    ,@agent = 1
+    ,@select = 1
+GO
+EXEC sp_loginUser 
+    'mensur480'
+    ,'Mensur123#'
+    ,@agent = 1
+    ,@select = 1
+GO
+-- CUSTOMER ACCOUNTS
+
+select * from customers
+select * from customer_addresses
+select * from addresses a
+
+EXEC sp_createUser
+    'customer 1'  -- must be unique
+    ,'Pa55word!'
+    ,'Jamal'
+    ,'Mosley'
+    ,1 
+    ,@address1 ='Koenigstrasse 2,63770,Goldbach,DE'
+    ,@address2 ='Lange Strasse 95,85702,Unterschleißheim,DE'
+    ,@email ='p6dimaux33@temporary-mail.net'  -- must be unique
+    ,@phone = '089 40 45 24'
+    ,@agent = 0
+    ,@select = 1
+GO
+EXEC sp_CreateUser 
+    'customer3'
+    ,'hallo!!!!'
+    ,'Jennifer'
+    ,'Schneider'
+    ,2 
+    ,@address1 ='Luetzowplatz 79,8052,Graz,AT'
+    ,@email ='4psolfsz3wb@temporary-mail.net'
+    ,@phone = '06569 23 60 43'
+    ,@agent = 0
+    ,@select = 1
+    GO
+    select * from customers
+    select * from customer_addresses
+    select * from addresses a
+GO
+EXEC sp_CreateUser 
+    'BMW Steyr'
+    ,'1234!!!!'
+    ,'BMW Group'
+    ,'Werk Steyr'
+    ,1 
+    ,@address1 ='Hinterbergestraße 2,4400,Steyr,AT'
+    ,@address2 ='Anton-neumanstraße 121,4040,Linz,AT'
+    ,@email ='info.steyr@bmw.com'
+    ,@phone = '+43 07252 8880'
+    ,@agent = 0
+    ,@select = 1
+GO
+EXEC sp_CreateUser 
+    'greenpeace'
+    ,'4321!!!!'
+    ,'Greenpeace'
+    ,'Greenpeace International'
+    ,4 
+    ,@address1 ='Wiedner Hauptstraße 120/124,1050,Wien,AT'
+    ,@address2 ='Münzgrabenstraße 20,8010,Graz,AT'
+    ,@email ='peace.info@greenpeace.com'
+    ,@phone = '+43 921900 010'
+    ,@agent = 0
+    ,@select = 1
+GO
+EXEC sp_CreateUser 
+    'greenpeace'
+    ,'4321!!!!'
+    ,'Greenpeace'
+    ,'Greenpeace International'
+    ,4 
+    ,@address1 ='Wiedner Hauptstraße 120/124,1050,Wien,AT'
+    ,@address2 ='Münzgrabenstraße 20,8010,Graz,AT'
+    ,@email ='peace.info@greenpeace.com'
+    ,@phone = '+43 921900 010'
+    ,@agent = 0
+    ,@select = 1
+GO
+EXEC sp_CreateUser 
+    'mrgreen'
+    ,'4321!!!!'
+    ,'Max'
+    ,'Mustermann'
+    ,1 
+    ,@address1 ='Mustermanngasse 1,1050,Wien,AT'
+    ,@email ='max@mustermann.com'
+    ,@phone = '+43 921900 010'
+    ,@agent = 0
+    ,@select = 1
+GO
+
+
+-- LOGIN 
+EXEC sp_loginUser
+    'customer3'  -- must be unique
+    ,'hallo!!!'
+    ,@agent = 0
+    ,@select = 1
+GO
+
+EXEC sp_unlockUser 3, @select = 1
+
+
+
+
+EXEC sp_createTicket 'long loading times on website','The website is teaking to long when loading on the users browser. compress pictures',2,@category = 4,@select =1;
+EXEC sp_createTicket 'Cronjob not working','The cronjob is not working is intent, several indexes stopped updating',3,@category = 5, @select = 1;
+EXEC sp_createTicket 'The bill from 24.10.2020 is missing','I cant find the bill from the date i mentioned.',3,@category = 3, @select = 1;
+EXEC sp_createTicket 'Problem 1','this problem is urgent, because nothing is working in my office',2,@category = 1,@select =1;
+EXEC sp_createTicket 'The Backup is corrupted','I dont know how to fix it but you must have an idea how.',3,@category = 4, @select = 1;
+EXEC sp_createTicket 'App not responding','there is some major bugs in the application where the view is in the settings tab',3,@category = 4, @select = 1;
+EXEC sp_createTicket 'Problem with Audio','Please help me fix this',2,@category = 1,@select =1;
+EXEC sp_createTicket 'Problem with Audio','Please help me fix this',1,@category = 1,@select =1;
+select * from ticket
+
+
+-- AGENT IS ABSENT
+-- Absence Prozedur
+-- 4 Tage
+EXEC sp_absence 3,'20210106 12:30:00','20210110 12:30:00', @select = 1;
+-- Ohne Ende
+EXEC sp_absence 2,'20210106 12:30:00', @select = 1;
+-- Urlaub ENDE
+EXEC sp_absence 2,NULL, NULL, @select = 1;
+
+
+
+-- PRIORITY CHANGE
+EXEC sp_changePriority 6,3,@select = 1
+
+-- STATUS CHANGE
+EXEC sp_changeStatus 1,3,@select = 1;
+select * from ticket
+
