@@ -566,10 +566,12 @@
 
 
 
--- Prozedur 1: sp_createUser
+-- Procedur 1: sp_createUser
 -- Is a procedure to create either a customer or an agent. Parameter that are provided
 -- get stored in the customers table, staff table, addresses table or the customer_addresses table.
 -- Depending on the @agent bit.
+-- This procedure takes two address strings which must be separated with three commas so that it can be split up into streetname, city, postalcode and country. 
+-- The part that creates the agent only can take one address.
 
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_createUser
@@ -728,10 +730,8 @@ CREATE OR ALTER PROCEDURE dbo.sp_createUser
     END
 GO
 
--- Testaufrufe
-
-
--- Variante 1 mit Ergebnis AB
+-- Tests
+-- Variant 1 creates staff / agent
 EXEC sp_createUser
  'testuser2' -- must be unique and longer than 6 letters
  ,'Pasddsfsdf!' -- must be longer than 6 letters
@@ -746,9 +746,7 @@ EXEC sp_createUser
  ,@select = 1
 GO
 SELECT * FROM staff
-
-
--- Variante 2 mit Ergebnis CD
+-- Variant 2 creates customer
 EXEC sp_createUser
     'customer'  -- must be unique and longer than 6 letters
     ,'Pasddsfsdf!' -- must be longer than 6 letters
@@ -765,11 +763,8 @@ GO
 SELECT * FROM customers
 
 
-
-
--- Prozedur 2: sp_loginUser
--- This procedure is used to login user, either agents or customers to their accounts.
-
+-- Procedur 2: sp_loginUser
+-- This procedure is used to log in a user, either agents or customers to their accounts.
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_loginUser
     @username VARCHAR(50),
@@ -861,9 +856,8 @@ CREATE OR ALTER PROCEDURE dbo.sp_loginUser
             END
     END
 GO
-
--- Variante 1 mit Ergebnis AB
-
+-- Tests
+-- Variant 1 right password
 EXEC sp_loginUser
     'dwori10' 
     ,'Pa55w.rd!!'
@@ -876,24 +870,19 @@ EXEC sp_loginUser
     ,@agent = 1
     ,@select = 1
 GO
-
--- Variante 2 mit Ergebnis CD
-
+-- Variant 2 wrong password
 EXEC sp_loginUser
     'customer3' 
     ,'hallo!!!'
     ,@agent = 0
     ,@select = 1
 GO
-
 -- reset 
 EXEC sp_unlockUser 2, @select = 1
 
 
-
--- Prozedur 3: sp_unlockUser
+-- Procedur 3: sp_unlockUser
 -- This procedure is used to unlock a user account after too many failed logins. 
-
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_unlockUser
     @customer_id INT,
@@ -946,28 +935,22 @@ CREATE OR ALTER PROCEDURE dbo.sp_unlockUser
             END
     END
 GO
-
-
-
--- Variante 1 mit Ergebnis AB
-
+-- TESTS
+-- Variant 1 (locks user so that it is possbile to unlock him)
 EXEC sp_loginUser
     'customer3' 
     ,'hallo!!!'
     ,@agent = 0
     ,@select = 1
 GO
-
 -- reset 
 EXEC sp_unlockUser 2, @select = 1
-
--- Variante 2 mit Ergebnis CD
-
+-- Variant 2 with errors
 EXEC sp_unlockUser 11111, @select = 1
 EXEC sp_unlockUser 1, @select = 1
 
 
--- Prozedur 4: dbo.sp_createTicket
+-- Procedur 4: dbo.sp_createTicket
 -- With this procedure, customers can issue tickets to the agents. It creates a new ticket and automatically assigns a new agent to it.
 -- But only if there is an agent available and if he is as-signed to the category the ticket is related to. Another feature is that the timestamp
 -- of the ticket’s creation is stored.
@@ -1042,13 +1025,14 @@ CREATE OR ALTER PROCEDURE dbo.sp_createTicket
             END
     END
 GO
+--TEST
+-- Variant 1
+EXEC sp_createTicket 'long loading times on website','The website is teaking to long when loading on the users browser. compress pictures',2,@category = 4,@select =1;
+EXEC sp_createTicket 'Cronjob not working','The cronjob is not working is intent, several indexes stopped updating',3,@category = 5, @select = 1;
 
--- Variante 1 mit Ergebnis AB
--- Variante 2 mit Ergebnis CD
 
 
-
--- Prozedur 5: dbo.sp_changeStatus
+-- Procedur 5: dbo.sp_changeStatus
 -- This procedure is used by agents to start a transition from one status into another. 
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
@@ -1119,23 +1103,22 @@ CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
             END
     END
 GO
-
--- STATUS CHANGE
---Auf Status 2 ändern
+-- TEST
+-- Status 2 
 EXEC sp_changeStatus 3,2,@select = 1
 SELECT * FROM ticket WHERE id = 3
 
---Auf Status 1 zurückändern
+-- Status 1
 EXEC sp_changeStatus 3,1,@select = 1
 SELECT * FROM ticket WHERE id = 3
 
---Auf Status 3 ändern
+-- Status 3
 EXEC sp_changeStatus 3,3,@select = 1
 SELECT * FROM ticket WHERE id = 3
 SELECT * FROM ticket_statuses
 
 
--- Prozedur 6: dbo.sp_changePriority
+-- Procedur 6: dbo.sp_changePriority
 -- The procedure is used by the agents to change the priority of their tickets.
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_changePriority
@@ -1191,9 +1174,9 @@ GO
 EXEC sp_changePriority 6,3,@select = 1
 
 
--- Prozedur 7: dbo.sp_switchAgent
--- This procedure is used to switch tickets from one agent to another. It is automatically used if someone is absent
--- for longer than three days or with unknown end of absence.
+-- Procedur 7: dbo.sp_switchAgent
+-- This procedure is used to switch tickets from one agent to another. It is automatically used in the trigger if someone is absent
+-- for longer than some days or with unknown end of absence.
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_switchAgent
     @ticket_id INT,
@@ -1267,11 +1250,11 @@ CREATE OR ALTER PROCEDURE dbo.sp_switchAgent
 GO
 
 
--- 
+-- Test Variant 1
 EXEC sp_switchAgent @ticket_id = 2,@select = 1;
 
 
--- Prozedur 8: dbo.absence
+-- Procedur 8: dbo.absence
 -- The sp_absence procedure puts agents on vacation or rather sets them absent, either until a certain date or open ended.
 GO
 CREATE OR ALTER PROCEDURE sp_absence
@@ -1327,12 +1310,12 @@ CREATE OR ALTER PROCEDURE sp_absence
 GO
 
 
--- Absence Prozedur
---4 Tage
+-- Test
+--4 days
 EXEC sp_absence 5,'20210114 12:30:00','20210119 12:30:00', @select = 1;
--- Ohne Ende
+-- without end
 EXEC sp_absence 2,'20210106 12:30:00', @select = 1;
--- Urlaub ENDE
+-- reset the agent to not absent
 EXEC sp_absence 5,NULL, NULL, @select = 1;
 
 select * from staff

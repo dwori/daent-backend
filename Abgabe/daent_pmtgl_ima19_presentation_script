@@ -17,7 +17,7 @@ EXECUTE dbo.sp_CreateUser
   ,@salutation = 1
   ,@address1 = 'Reslfeldtstraße 10,4451,Garsten,AT'
   ,@email = 'MBUKVAREVIC@GMAIL.COM'
-  ,@categories = 'Customer Services'
+  ,@categories = 'Customer Services,Technical,Website,Infrastucture Support'
   ,@phone = '06764604331'
   ,@agent = 1
   ,@select = 1
@@ -32,7 +32,7 @@ EXECUTE dbo.sp_CreateUser
   ,@salutation = 1
   ,@address1 = 'Reslfeldtstraße 10,4451,Garsten,AT'
   ,@email = 'MBUKVAREVIC@GMAIL.COM'
-  ,@categories = 'Customer Services'
+  ,@categories = 'Customer Services,Technical,Website,Infrastructure Support'
   ,@phone = '06764604331'
   ,@agent = 1
   ,@select = 1
@@ -45,7 +45,7 @@ EXEC sp_createUser
  ,1 
  ,@address1 ='Weinbergweg 4,9400,Wolfsberg,AT'
  ,@email ='kainz.domi@gmail.com'
- ,@categories = 'Technical,Infrastucture Support,Website'
+ ,@categories = 'Technical,Infrastucture Support,Website,Customer Services,VoIP'
  ,@phone = '0 66410 62393'
  ,@agent = 1
  ,@select = 1
@@ -58,7 +58,7 @@ EXEC sp_createUser
  ,1 
  ,@address1 ='Schererstraße 39b ,8052,Graz,AT'
  ,@email ='lukas.dworacek@gmail.com'
- ,@categories = 'Technical,Infrastucture Support,Website'
+ ,@categories = 'Technical,Infrastucture Support,Website,Billing'
  ,@phone = '0 66410 6111112393'
  ,@agent = 1
  ,@select = 1
@@ -71,7 +71,7 @@ EXEC sp_createUser
  ,1 
  ,@address1 ='Kaiser Franz Joseph Platz 1,8010,Graz,AT'
  ,@email ='controller@gmail.com'
- ,@categories = 'Billing,VoIP,Customer Services'
+ ,@categories = 'Billing,VoIP,Customer Services,Server'
  ,@phone = '0 66412212393'
  ,@agent = 1
  ,@select = 1
@@ -191,7 +191,7 @@ EXEC sp_CreateUser
     ,@select = 1
 GO
 
-
+select * from customers
 -- LOGIN 
 EXEC sp_loginUser
     'customer3'  -- must be unique
@@ -200,7 +200,7 @@ EXEC sp_loginUser
     ,@select = 1
 GO
 
-EXEC sp_unlockUser 3, @select = 1
+EXEC sp_unlockUser 2, @select = 1
 
 
 
@@ -214,7 +214,7 @@ EXEC sp_createTicket 'App not responding','there is some major bugs in the appli
 EXEC sp_createTicket 'Problem with Audio','Please help me fix this',2,@category = 1,@select =1;
 EXEC sp_createTicket 'Problem with Audio','Please help me fix this',1,@category = 1,@select =1;
 select * from ticket
-
+select * from staff
 
 -- AGENT IS ABSENT
 -- Absence Prozedur
@@ -223,7 +223,7 @@ EXEC sp_absence 3,'20210106 12:30:00','20210110 12:30:00', @select = 1;
 -- Ohne Ende
 EXEC sp_absence 2,'20210106 12:30:00', @select = 1;
 -- Urlaub ENDE
-EXEC sp_absence 2,NULL, NULL, @select = 1;
+EXEC sp_absence 3,NULL, NULL, @select = 1;
 
 
 
