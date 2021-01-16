@@ -1,26 +1,26 @@
 /*
 ##########################################################################################
 #                                                                                        #
-#       Projekt DAENT | IMA19 | WS20/21                       							 #
+#       Project DAENT | IMA19 | WS20/21                       							 #
 #                                                                                        #
-#       Gruppe 4																		 #
+#       Group 4																		     #
 #                                                                                        #
-#       Gruppenmitglieder:  Bukvarevic Mensur                                            #
+#       Groupmembers:       Bukvarevic Mensur                                            #
 #                           Dworacek Lukas                                               #
 #                           Kainz Dominik                                                #
 #                                                                                        #
-#       Thema: Ticket System                                                             #
+#       Topic: Ticket System                                                             #
 #                                                                                        #
 ########################################################################################## */
 
 
 
 -- #######################################################################################
---  Tabellen
+--  Tables
 -- #######################################################################################
---AUSKLAPPEN--
 
-    -- Tabelle 1: dbo.salutations
+
+    -- Table 1: dbo.salutations
     -- The table dbo.salutation stores strings that represent the different kinds of salutation an entity can have. 
     CREATE TABLE salutations (
         id TINYINT NOT NULL,
@@ -28,8 +28,7 @@
         CONSTRAINT PK_salutations PRIMARY KEY (id),
         CONSTRAINT UK_salutations_name UNIQUE (name)
     )
-
-    -- Tabelle 1 - INSERTS
+    -- Table 1 - INSERTS
     INSERT INTO salutations (id,name) VALUES (1, 'Mr.')
     INSERT INTO salutations (id,name) VALUES (2, 'Ms.')
     INSERT INTO salutations (id,name) VALUES (3, 'Company')
@@ -37,7 +36,7 @@
     INSERT INTO salutations (id,name) VALUES (5, 'other')
 
 
-    -- Tabelle 2: dbo.customers
+    -- Table 2: dbo.customers
     -- The table dbo.customers is used to store customer data, so that tickets can be related to an according issuer. 
     -- It is requied to store the lastname and the firstname of the person.
     -- Every user has his own unique username.
@@ -62,7 +61,9 @@
         CONSTRAINT UK_customers_username UNIQUE (username),
         CONSTRAINT UK_customers_email UNIQUE (email)
     )
-    -- Tabelle 2 dbo.countries: 
+
+
+    -- Table 3: dbo.countries
     -- This table is used to store country names with their ISO code that is also used as 
     -- the primary key PK_countries which is referenced in the address table where the actual address with ISO code is stored.
     CREATE TABLE countries (
@@ -70,8 +71,7 @@
         name VARCHAR(100),
         CONSTRAINT PK_countries PRIMARY KEY (iso)
     )
-
-    -- Tabelle 2 INSERTS:
+    -- Table 3 - INSERTS:
     INSERT INTO countries (iso, name) VALUES ('AL', 'Albanien')
     INSERT INTO countries (iso, name) VALUES ('BE', 'Belgium')
     INSERT INTO countries (iso, name) VALUES ('BA', 'Bosnia and Herzegovina')
@@ -114,8 +114,9 @@
     INSERT INTO countries (iso, name) VALUES ('CY', 'Cyprus')
 
     
-    -- Tabelle 6: dbo.addresses
-    -- //todo
+    -- Table 4: dbo.addresses
+    -- The addresses table stores the information of customer and staff addresses which are the street name, the postal code, the city name and the country (ISO code). 
+    -- The primary key PK_addresses is the id of the address and it is also set to IDENTITY to make it generate id numbers for addresses.
     CREATE TABLE addresses (
         id INT IDENTITY NOT NULL,
         streetname VARCHAR(80),
@@ -127,7 +128,9 @@
     )
 
 
-    -- Tabelle 4: dbo.customer_addresses
+    -- Table 5: dbo.customer_addresses
+    -- This table stores the id of an address and the id of an customer. 
+    -- Additionally, it stores a boolean that says if the customer has a shipping address or not. 
     CREATE TABLE customer_addresses (
         aid INT,
         cid INT,
@@ -137,17 +140,18 @@
         CONSTRAINT PK_customer_addresses PRIMARY KEY (aid,cid)
     )
 
-    -- Tabelle 5: dbo.ticket_categories
-    -- //todo
+
+    -- Table 6: dbo.ticket_categories
+    -- The categories table includes the different departments of work. 
+    -- Every staff member is as-signed to one or more sections. 
+    -- Depending on what a customer needs, the ticket system allocates the customer problems to the right employees, who are specialists in their field.
     CREATE TABLE ticket_categories (
         id TINYINT NOT NULL,
         name VARCHAR(30),
         CONSTRAINT PK_ticket_categories PRIMARY KEY(id),
         CONSTRAINT UK_ticket_categories_name UNIQUE (name)
     )
-
-
-    -- Tabelle 5 - INSERTS
+    -- Table 6 - INSERTS
     INSERT INTO ticket_categories (id,name) VALUES (1, 'Technical')
     INSERT INTO ticket_categories (id,name) VALUES (2, 'Customer Services')
     INSERT INTO ticket_categories (id,name) VALUES (3, 'Billing')
@@ -157,9 +161,13 @@
     INSERT INTO ticket_categories (id,name) VALUES (7, 'VoIP')
     
     
-
-    -- Tabelle 7: dbo.staff
-    -- //todo
+    -- Table 7: dbo.staff
+    -- The staff table is used to store employee data and specify it. Staff members can be assigned to a ticket with their id. 
+    -- The finished tickets get stored as well with the customer and a number which indicates the queue, the work an agent has still to complete.
+    -- It is required to store the last name and the first name of the person. Every user has his own unique username.
+    -- It also stores the email address and the phone number of a person.
+    -- The account behaviour of the person is protocoled with the time of the registration and the time the last login accrued.
+    -- The columns absence_begin and absence_end are used to store the time an agent is absent.
     CREATE TABLE staff (
         id INT IDENTITY NOT NULL,
         username VARCHAR(50) NOT NULL,
@@ -185,8 +193,9 @@
     )
 
     
-    -- Tabelle 8: dbo.ticket_categories_staff
-    -- Kurzbeschreibung: Enthält Referenzen(IDs) zwischen dbo.staff und dbo.ticket_categories
+    -- Table 8: dbo.ticket_categories_staff
+    -- This table stores the id of an agent (member of staff) and the id of a category. 
+    -- To have a reference between those two, both values together build the primary key of that table.
     CREATE TABLE ticket_categories_staff (
         sid INT,
         tcid TINYINT,
@@ -196,37 +205,48 @@
     )
 
 
-    -- Tabelle 9: dbo.ticket_statuses
-    -- Kurzbeschreibung: Enthält die möglichen Status(e) der Tickets
+    -- Table 9: dbo.ticket_statuses
+    -- The status table shows different states of a ticket.
+    -- A ticket can either be pending, in process or solved and is being filled in by the staff members. 
+    -- If a ticket gets solved (= 3), it is closed and completed. 
+    -- This means, that it cannot be assigned to anyone anymore.
     CREATE TABLE ticket_statuses (
         id INT PRIMARY KEY NOT NULL,
         name VARCHAR(20),
         CONSTRAINT UK_ticket_statuses_name UNIQUE (name)
     )
-
-    --Tabelle 9 - INSERTS
+    -- Table 9 - INSERTS
     INSERT INTO ticket_statuses (id,name) VALUES (1, 'Pending')
     INSERT INTO ticket_statuses (id,name) VALUES (2, 'in Process')
     INSERT INTO ticket_statuses (id,name) VALUES (3, 'Solved')
 
 
-    -- Tabelle 10: dbo.ticket_priorities
-    -- Kurzbeschreibung: Enthält die möglichen Prioritäten der Tickets
+    -- Table 10: dbo.ticket_priorities
+    -- The ticket priorities table defines the different priority levels a ticket can have.
+    -- Depending on the size and urgency of the problem, the ticket gets assigned either critical (highly urgent), normal, low (low urgency) or none.
     CREATE TABLE ticket_priorities (
         id TINYINT PRIMARY KEY NOT NULL,
         name VARCHAR(20),
         CONSTRAINT UK_ticket_priorities_name UNIQUE (name)
     )
 
-    --Tabelle 10 - INSERTS
+    -- Table 10 - INSERTS
     INSERT INTO ticket_priorities (id,name) VALUES (0, 'None')
     INSERT INTO ticket_priorities (id,name) VALUES (1, 'Low')
     INSERT INTO ticket_priorities (id,name) VALUES (2, 'Normal')
     INSERT INTO ticket_priorities (id,name) VALUES (3, 'Critical')
 
 
-    -- Tabelle 11: dbo.ticket
-    -- Kurzbeschreibung: Enthält sämtliche relevante Daten zum ticket sowie dessen Agent und Kategorie.
+    -- Table 11: dbo.ticket
+    -- The ticket table is the main table of the ticket system. 
+    -- It contains its id, the detailed problem, the customer and agent as well as the status and priority.
+    -- The category is set and the time slots of a ticket progress are provided.
+    -- This table is the assembly point of our system and gathers the main information of the ticketing functionality. 
+    -- The ticket gets identified by an id and the customer by a customer_number.
+    -- While the subject only shows a short title of the problem, the detailed description is set in ticket_content.
+    -- Created_at, updated_at and completed_at show different self-explaining timestamps. 
+    -- Status and priority show the state and prioritization of one ticket. 
+    -- Agent represents the id of the assigned employee. 
     CREATE TABLE ticket (
         id INTEGER IDENTITY NOT NULL,
         subject VARCHAR(100) NOT NULL,
@@ -248,15 +268,17 @@
     )
 
 
-    -- Tabelle 12: dbo.settings
+    -- Table 12: dbo.settings
+    -- This table is used to store values that are used all over our project and therefore only need to be declared in here. 
+    -- For example, the maxQueue parameter is used in different procedures and trigger. 
+    -- The value is stored in this table and therefore if I need change, its only necessary to change one value in the table and not all the procedures and trigger. 
     CREATE TABLE settings (
         id INTEGER IDENTITY NOT NULL,
         value VARCHAR(100) NOT NULL,
         description VARCHAR(100),
         CONSTRAINT PK_settings PRIMARY KEY (id)
     )
-
-    -- Tabelle 12 INSERTS:
+    -- Table 12 - INSERTS:
     INSERT INTO settings (value,description) VALUES ('5','max ticket_queue')
     INSERT INTO settings (value,description) VALUES ('#sA1tyAF!?','salt für password encryption')
     INSERT INTO settings (value,description) VALUES ('4','absent days switch workload')
@@ -283,7 +305,10 @@
 -- #######################################################################################
 
     -- Trigger 1: dbo.ticket_statusOnlyup_upd
-    -- Kurzbeschreibung: XXXXXXXXXX
+    -- If an update to the status column of the ticket table is processed, values of the inserted and deleted table are compared. 
+    -- Is the value of the deleted table bigger than the other one, an error is thrown.
+    -- This trigger is used to check the transition from one status to another. 
+    -- So it is possible to increase the status but not to go back.
     GO
     CREATE OR ALTER TRIGGER dbo.ticket_statusOnlyup_upd
         ON dbo.ticket
@@ -305,24 +330,23 @@
             END
         END
     GO
+    -- Trigger 1 - TESTS:
+
+    -- Variant 1 (works to increase the status)
+    UPDATE dbo.ticket
+    SET status = 2 
+    WHERE id = 2
+
+    -- Variant 2 (denies to decrease the status)
+    UPDATE dbo.ticket
+    SET status = 1 
+    WHERE id = 2
 
 
-
-
-    -- Testaufrufe
-    -- Variante 1 mit Ergebnis AB
-
-    -- Variante 2 mit Ergebnis CD
-    -- ...
-
-
-    -- Reset
-
-
-    -- Trigger 2: dbo.customers_failedlogins
-    -- Kurzbeschreibung: XXXXXXXXXX
+    -- Trigger 2: dbo.customers_lockUser_upd
+    -- This trigger fires whenever the amount of failed_login exceeds the number saved in the settings table failed login attempts. 
+    -- If this happens, the customer gets locked and cannot login until the account is unlocked by changeing the bit locked and setting the failed attempts to zero.
     GO
-    --drop TRIGGER dbo.customers_failedlogins
     CREATE OR ALTER TRIGGER dbo.customers_lockUser_upd
         ON dbo.customers
         FOR update
@@ -339,21 +363,21 @@
             END
         END
     GO
-
-
-
-    -- Testaufrufe
-    -- Variante 1 mit Ergebnis AB
-
-    -- Variante 2 mit Ergebnis CD
-    -- ...
-
-
-
+    -- Trigger 2 - TESTS:
+    -- Variant 1 (account gets locked)
+    UPDATE dbo.customers
+    SET failed_logins = 4
+    WHERE id = 1
+    
     -- Reset
+    UPDATE dbo.customers
+    SET failed_logins = 0, locked = 0
+    WHERE id = 1
 
-    -- Trigger 3: dbo.customers_failedlogins
-    -- Kurzbeschreibung: XXXXXXXXXX
+
+    -- Trigger 3: dbo.ticket_finished_upd
+    -- This trigger checks whether a ticket is already closed and therefore cannot be assigned any-more. 
+    -- If the status of a ticket is set to three, an error message is thrown.
     GO 
     CREATE OR ALTER TRIGGER dbo.ticket_finished_upd
         ON dbo.ticket
@@ -365,29 +389,23 @@
             IF UPDATE(agent)
                 BEGIN
                     IF (SELECT status FROM ticket WHERE id IN(SELECT DISTINCT ID FROM Inserted)) = 3
+                        --ROLLBACK
                         THROW 50632,'Ticket bereits abgeschlossen',1;
                 END
         END
     GO
 
 
-
-    -- Testaufrufe
-    -- Variante 1 mit Ergebnis AB
-
-    -- Variante 2 mit Ergebnis CD
-    -- ...
-
-
-
-    -- Reset
-
 -- #######################################################################################
 --  Trigger for further actions
 -- #######################################################################################
 
     -- Trigger 4: dbo.ticket_status_upd
-    -- Kurzbeschreibung: XXXXXXXXXX
+    -- This trigger fires whenever an update on the status of one ticket changes. 
+    -- The status of a ticket shows its completion process.
+    -- The trigger distinguishes between status update and status completion.
+    -- Whether it is an update or completion, the trigger fills in the proper fields updated_at and completed_at with the current timestamp. 
+    -- Also, when completed, the priority of a ticket is set to null.
     GO
     CREATE OR ALTER TRIGGER dbo.ticket_status_upd
         ON dbo.ticket
@@ -418,7 +436,7 @@
                     SET completed_at = SYSDATETIME()
                     WHERE id = @ticket_id;
 
-                    --If the status is changed to 3, the priority automaticall is changed to 0.
+                    --If the status is changed to 3, the priority automatically is changed to 0.
                     UPDATE dbo.ticket
                     SET priority = 0
                     WHERE id = @ticket_id;
@@ -426,21 +444,21 @@
             END     
         END
     GO
+    -- Trigger 4 - TESTS:
+    -- Variant 1 (updated_at is stored)
+    UPDATE dbo.ticket
+    SET status = 2 
+    WHERE id = 2
 
-
-    -- Testaufrufe
-    -- Variante 1 mit Ergebnis AB
-
-    -- Variante 2 mit Ergebnis CD
-    -- ...
-
-
-
-    -- Reset
+    -- Variante 2 (completed_at is stored)
+    UPDATE dbo.ticket
+    SET status = 3 
+    WHERE id = 2
 
 
     -- Trigger 5: dbo.ticket_priority_upd
-    -- Kurzbeschreibung: XXXXXXXXXX
+    -- This trigger fires whenever an update on the priority of one ticket changes. 
+    -- If the priority gets changed, the updated_at field is filled in with the current timestamp.
     GO
     CREATE OR ALTER TRIGGER dbo.ticket_priority_upd
         ON dbo.ticket
@@ -460,20 +478,17 @@
             END    
         END;
     GO
+    -- Trigger 4 - TESTS:
+    -- Variant 1 (updated_at is stored)
+    UPDATE dbo.ticket
+    SET priority = 2 
+    WHERE id = 2
 
-
-    -- Testaufrufe
-    -- Variante 1 mit Ergebnis AB
-
-    -- Variante 2 mit Ergebnis CD
-    -- ...
-
-
-
-    -- Reset
-
+  
     -- Trigger 6: dbo.staff_absenceSwitch_upd
-    -- Kurzbeschreibung: XXXXXXXXXX
+    -- This trigger fires whenever an update on absence_begin of a staff member happens. 
+    -- The main task of this trigger is to detect whenever a staff member is absent for more than the amout of days stored in the settings table. 
+    -- If this is the case, then the trigger calls the procedure sp_switchAgent with every ticket id that is assigned to the agent.
     GO
     CREATE OR ALTER TRIGGER dbo.staff_absenceSwitch_upd
         ON dbo.staff
@@ -543,16 +558,6 @@
             END  
         END
     GO
-
-    -- Testaufrufe
-    -- Variante 1 mit Ergebnis AB
-
-    -- Variante 2 mit Ergebnis CD
-    -- ...
-
-
-
-    -- Reset
 
 
 -- #######################################################################################
