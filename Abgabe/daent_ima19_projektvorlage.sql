@@ -567,7 +567,9 @@
 
 
 -- Prozedur 1: sp_createUser
--- 
+-- Is a procedure to create either a customer or an agent. Parameter that are provided
+-- get stored in the customers table, staff table, addresses table or the customer_addresses table.
+-- Depending on the @agent bit.
 
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_createUser
@@ -766,7 +768,8 @@ SELECT * FROM customers
 
 
 -- Prozedur 2: sp_loginUser
--- Kurzbeschreibung: XXXXXXXXXX
+-- This procedure is used to login user, either agents or customers to their accounts.
+
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_loginUser
     @username VARCHAR(50),
@@ -888,8 +891,8 @@ EXEC sp_unlockUser 2, @select = 1
 
 
 
--- Prozedur 3: sp_loginUser
--- Kurzbeschreibung: XXXXXXXXXX
+-- Prozedur 3: sp_unlockUser
+-- This procedure is used to unlock a user account after too many failed logins. 
 
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_unlockUser
@@ -902,8 +905,10 @@ CREATE OR ALTER PROCEDURE dbo.sp_unlockUser
     BEGIN
         SET NOCOUNT ON;
         BEGIN TRY
+            --Variables
             DECLARE @locked BIT
             DECLARE @failed_logins TINYINT
+            DECLARE @maxFailed_logins INT = (SELECT value FROM dbo.settings WHERE id = 4)
 
             --Fetch locked status and number of failed logins
             SELECT @locked = locked, @failed_logins = failed_logins
@@ -912,7 +917,7 @@ CREATE OR ALTER PROCEDURE dbo.sp_unlockUser
             IF (@failed_logins IS NULL)
                 THROW 50016, 'unlock: THIS ACCOUNT DOES NOT EXIST',1;
             --If there are more than 3 failed logins and the account is locked it ges unlocked with an update 
-            IF (@failed_logins > 3 AND @locked = 1)
+            IF (@failed_logins > @maxFailed_logins AND @locked = 1)
                 BEGIN
                 UPDATE dbo.customers
                 SET locked = 0,failed_logins = 0
@@ -963,7 +968,9 @@ EXEC sp_unlockUser 1, @select = 1
 
 
 -- Prozedur 4: dbo.sp_createTicket
--- Kurzbeschreibung: XXXXXXXXXX
+-- With this procedure, customers can issue tickets to the agents. It creates a new ticket and automatically assigns a new agent to it.
+-- But only if there is an agent available and if he is as-signed to the category the ticket is related to. Another feature is that the timestamp
+-- of the ticket’s creation is stored.
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_createTicket
     @subject VARCHAR(100),
@@ -1042,6 +1049,7 @@ GO
 
 
 -- Prozedur 5: dbo.sp_changeStatus
+-- This procedure is used by agents to start a transition from one status into another. 
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_changeStatus
     @ticket_id INT,
@@ -1128,7 +1136,7 @@ SELECT * FROM ticket_statuses
 
 
 -- Prozedur 6: dbo.sp_changePriority
-
+-- The procedure is used by the agents to change the priority of their tickets.
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_changePriority
     @ticket_id  INT,
@@ -1184,6 +1192,8 @@ EXEC sp_changePriority 6,3,@select = 1
 
 
 -- Prozedur 7: dbo.sp_switchAgent
+-- This procedure is used to switch tickets from one agent to another. It is automatically used if someone is absent
+-- for longer than three days or with unknown end of absence.
 GO
 CREATE OR ALTER PROCEDURE dbo.sp_switchAgent
     @ticket_id INT,
@@ -1262,6 +1272,7 @@ EXEC sp_switchAgent @ticket_id = 2,@select = 1;
 
 
 -- Prozedur 8: dbo.absence
+-- The sp_absence procedure puts agents on vacation or rather sets them absent, either until a certain date or open ended.
 GO
 CREATE OR ALTER PROCEDURE sp_absence
     @agent INT,
@@ -1332,6 +1343,7 @@ select * from ticket
 -- #######################################################################################
 
 -- dbo.Split
+-- This function is used to split a string at the provided delimiter.
 GO
 CREATE OR ALTER FUNCTION dbo.Split
   (
