@@ -906,7 +906,7 @@ CREATE OR ALTER PROCEDURE dbo.sp_unlockUser
             IF (@failed_logins IS NULL)
                 THROW 50016, 'unlock: THIS ACCOUNT DOES NOT EXIST',1;
             --If there are more than 3 failed logins and the account is locked it ges unlocked with an update 
-            IF (@failed_logins > @maxFailed_logins AND @locked = 1)
+            IF (@failed_logins >= @maxFailed_logins AND @locked = 1)
                 BEGIN
                 UPDATE dbo.customers
                 SET locked = 0,failed_logins = 0

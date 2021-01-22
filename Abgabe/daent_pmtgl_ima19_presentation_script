@@ -1,16 +1,31 @@
+-- INTRO mensur
+
+--- TICKET SYSTEM
+
+
+
+
+
+
+
+
 -- TICKET CATEGORIES
 
 select * from ticket_categories
 
 select * from salutations
 
+select * from settings
+
+select * from countries
 
 
 
 
 
 
--- STAFF / AGENT creation
+
+-- STAFF / AGENT creation dominik
 
 select * from staff
 select * from addresses
@@ -77,6 +92,19 @@ EXECUTE dbo.sp_CreateUser
   ,@agent = 1
   ,@select = 1
 GO
+EXECUTE dbo.sp_CreateUser
+   @username = 'men'
+  ,@password = 'Mensur123#'
+  ,@firstname = 'Mensur'
+  ,@lastname = 'Bukvarevic'
+  ,@salutation = 1
+  ,@address1 = 'Reslfeldtstraße 10,4451,Garsten,AT'
+  ,@email = 'MBUKVAREVIC@GMAL.COM'
+  ,@categories = 'Customer Services,Technical,Website,Infrastructure Support'
+  ,@phone = '06764604331'
+  ,@agent = 1
+  ,@select = 1
+GO
 
 -- address must contain at least 3 commas
 EXECUTE dbo.sp_CreateUser
@@ -123,10 +151,10 @@ EXEC sp_createUser
  ,@select = 1
 GO
 EXEC sp_createUser
- 'contrrr'
+ 'controller'
  ,'Pa555w.rd!!'
- ,'Mr.'
- ,'Controller'
+ ,'Franz'
+ ,'Joseph'
  ,1 
  ,@address1 ='Kaiser Franz Joseph Platz 1,8010,Graz,AT'
  ,@email ='controller@gmail.com'
@@ -136,15 +164,15 @@ EXEC sp_createUser
  ,@select = 1
 GO
 EXEC sp_createUser
- 'chef121212'
+ 'lisa12345'
  ,'Pa555tw.rd!!'
- ,'Maximilian'
- ,'Chef'
- ,1 
+ ,'Lisa'
+ ,'Zimmerfrau'
+ ,2 
  ,@address1 ='Gries Platz 20,8020,Graz,AT'
- ,@email ='maxchef@gmail.com'
+ ,@email ='zimmerfrau@gmail.com'
  ,@categories = 'Billing,VoIP,Server'
- ,@phone = '0 66412212393'
+ ,@phone = '0 66412545235'
  ,@agent = 1
  ,@select = 1
 GO
@@ -152,7 +180,7 @@ GO
 
 
 
-
+select * from settings
 -- LOGIN agent / staff
 
 EXEC sp_loginUser
@@ -185,7 +213,7 @@ select * from addresses
 
 
 EXEC sp_createUser
-    'customer 1'  -- must be unique & must be longer than 7 characters
+    'customer1'  -- must be unique & must be longer than 7 characters
     ,'Pa55word!'  -- must be longer than 7 characters
     ,'Jamal'
     ,'Mosley'
@@ -198,7 +226,7 @@ EXEC sp_createUser
     ,@select = 1
 GO
 EXEC sp_CreateUser 
-    'customer3'
+    'customer2'
     ,'hallo!!!!'
     ,'Jennifer'
     ,'Schneider'
@@ -208,17 +236,14 @@ EXEC sp_CreateUser
     ,@phone = '06569 23 60 43'
     ,@agent = 0
     ,@select = 1
-    GO
-    select * from customers
-    select * from customer_addresses
-    select * from addresses a
 GO
+
 EXEC sp_CreateUser 
     'BMW Steyr'
     ,'1234!!!!'
     ,'BMW Group'
     ,'Werk Steyr'
-    ,1 
+    ,3 
     ,@address1 ='Hinterbergestraße 2,4400,Steyr,AT'
     ,@address2 ='Anton-neumanstraße 121,4040,Linz,AT'
     ,@email ='info.steyr@bmw.com'
@@ -232,31 +257,19 @@ EXEC sp_CreateUser
     ,'Greenpeace'
     ,'Greenpeace International'
     ,4 
-    ,@address1 ='Wiedner Hauptstraße 120/124,1050,Wien,AT'
+    ,@address1 ='Wiener Hauptstraße 120/124,1050,Wien,AT'
     ,@address2 ='Münzgrabenstraße 20,8010,Graz,AT'
     ,@email ='peace.info@greenpeace.com'
     ,@phone = '+43 921900 010'
     ,@agent = 0
     ,@select = 1
 GO
+
 EXEC sp_CreateUser 
-    'greenpeace'
-    ,'4321!!!!'
-    ,'Greenpeace'
-    ,'Greenpeace International'
-    ,4 
-    ,@address1 ='Wiedner Hauptstraße 120/124,1050,Wien,AT'
-    ,@address2 ='Münzgrabenstraße 20,8010,Graz,AT'
-    ,@email ='peace.info@greenpeace.com'
-    ,@phone = '+43 921900 010'
-    ,@agent = 0
-    ,@select = 1
-GO
-EXEC sp_CreateUser 
-    'mrgreen'
-    ,'4321!!!!'
-    ,'Max'
-    ,'Mustermann'
+    'therealdonaldtrump'
+    ,'12345!!!!'
+    ,'Donald'
+    ,'Trump'
     ,1 
     ,@address1 ='Mustermanngasse 1,1050,Wien,AT'
     ,@email ='max@mustermann.com'
@@ -275,29 +288,106 @@ select * from customers
 select * from settings
 
 EXEC sp_loginUser
-    'customer3'  
+    'customer2'  
     ,'hallo!!!'
     ,@agent = 0
     ,@select = 1
 GO
 
+
+select * from customers
+
+
 EXEC sp_unlockUser 2, @select = 1
 
 
---- Creation of tickets
 
-EXEC sp_createTicket 'long loading times on website','The website is teaking to long when loading on the users browser. compress pictures',2,@category = 4,@select =1;
-EXEC sp_createTicket 'Cronjob not working','The cronjob is not working is intent, several indexes stopped updating',3,@category = 5, @select = 1;
-EXEC sp_createTicket 'The bill from 24.10.2020 is missing','I cant find the bill from the date i mentioned.',3,@category = 3, @select = 1;
-EXEC sp_createTicket 'Problem 1','this problem is urgent, because nothing is working in my office',2,@category = 1,@select =1;
-EXEC sp_createTicket 'The Backup is corrupted','I dont know how to fix it but you must have an idea how.',3,@category = 4, @select = 1;
-EXEC sp_createTicket 'App not responding','there is some major bugs in the application where the view is in the settings tab',3,@category = 4, @select = 1;
-EXEC sp_createTicket 'Problem with Audio','Please help me fix this',2,@category = 1,@select =1;
-EXEC sp_createTicket 'Problem with Audio','Please help me fix this',1,@category = 1,@select =1;
+
+
+--- Creation of tickets lukas
+select t.id,
+t.subject,
+t.ticket_content,
+st.firstname + ' ' + st.lastname as Agent,
+tc.name as Category,
+tp.name as Priority,
+ts.name as Status,
+c.username as customer_username,
+s.name as salutation,
+c.firstname,
+c.lastname,
+t.created_at,
+t.updated_at,
+t.completed_at
+from ticket t
+inner join staff st on t.agent = st.id
+inner join customers c on t.customer_number = c.id
+inner join salutations s on c.salutation = s.id
+inner join ticket_categories tc on t.category = tc.id
+inner join ticket_priorities tp on t.priority = tp.id
+inner join ticket_statuses ts on t.status = ts.id
+
+select * from ticket_categories_staff
+select * from ticket_categories
+select * from staff
+
+EXEC sp_createTicket 'long loading times on website',
+'The website is teaking to long when loading on the users browser. compress pictures',
+@customer = 2,
+@category = 4,
+@select = 1;
+
+
+EXEC sp_createTicket 'Cronjob not working',
+'The cronjob is not working is intent, several indexes stopped updating',
+@customer = 3,
+@category = 5,
+@select = 1;
+
+EXEC sp_createTicket 'The bill from 24.10.2020 is missing',
+'I cant find the bill from the date i mentioned.',
+@customer = 4,
+@category = 3,
+@select = 1;
+
+EXEC sp_createTicket 'Keyboard broken',
+'this problem is urgent, my keyboard is broken I need you to order a new one',
+@customer = 1,
+@category = 1,
+@select = 1;
+
+EXEC sp_createTicket 'The Backup is corrupted',
+'I dont know how to fix it but you must have an idea how.',
+@customer = 5,
+@category = 6,
+@select = 1;
+
+EXEC sp_createTicket 'App not responding',
+'there is some major bugs in the application where the view is in the settings tab',
+@customer = 3,
+@category = 4,
+@select = 1;
+
+
+EXEC sp_createTicket 'Problem with Audio',
+'Please help me fix this',
+@customer = 2,
+@category = 7,
+@select = 1;
+
+
+
 select * from ticket
 select * from staff
 
--- PRIORITY CHANGE
+
+
+
+-- updating tickets mensur
+
+
+
+-- PRIORITY CHANGE 
 
 SELECT * FROM ticket_priorities
 
@@ -324,8 +414,6 @@ EXEC sp_changeStatus 3,3,@select = 1
 
 
 SELECT * FROM ticket
-
-
 
 
 
