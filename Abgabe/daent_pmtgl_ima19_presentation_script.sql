@@ -1,36 +1,20 @@
--- INTRO mensur
-
---- TICKET SYSTEM
-
-
-
-
-
-
-
+-- TICKET SYSTEM
 
 -- TICKET CATEGORIES
 
 select * from ticket_categories
 
-select * from salutations
+-- STAFF / AGENT creation
+
+select * from ticket_categories_staff
 
 select * from settings
 
-select * from countries
-
-
-
-
-
-
-
--- STAFF / AGENT creation dominik
-
 select * from staff
-select * from addresses
 
-select * from ticket_categories_staff
+select * from customers
+
+select * from addresses
 
 
 EXECUTE dbo.sp_CreateUser
@@ -48,80 +32,9 @@ EXECUTE dbo.sp_CreateUser
 GO
 
 -- password must be long enough
-EXECUTE dbo.sp_CreateUser
-   @username = 'mensur4802'
-  ,@password = '!'
-  ,@firstname = 'Mensur'
-  ,@lastname = 'Bukvarevic'
-  ,@salutation = 1
-  ,@address1 = 'Reslfeldtstraße 10,4451,Garsten,AT'
-  ,@email = 'MBUKVAREVIC@GMAIL.COM'
-  ,@categories = 'Customer Services,Technical,Website,Infrastructure Support'
-  ,@phone = '06764604331'
-  ,@agent = 1
-  ,@select = 1
-GO
-
-
 -- email must be unique and contain @ and .
-EXECUTE dbo.sp_CreateUser
-   @username = 'mensur4801'
-  ,@password = 'Mensur123#'
-  ,@firstname = 'Mensur'
-  ,@lastname = 'Bukvarevic'
-  ,@salutation = 1
-  ,@address1 = 'Reslfeldtstraße 10,4451,Garsten,AT'
-  ,@email = 'MBUKVAREVICGMAIL.COM'
-  ,@categories = 'Customer Services,Technical,Website,Infrastructure Support'
-  ,@phone = '06764604331'
-  ,@agent = 1
-  ,@select = 1
-GO
-
 -- username must be unique and longer than 7 characters
-EXECUTE dbo.sp_CreateUser
-   @username = 'mensur480'
-  ,@password = 'Mensur123#'
-  ,@firstname = 'Mensur'
-  ,@lastname = 'Bukvarevic'
-  ,@salutation = 1
-  ,@address1 = 'Reslfeldtstraße 10,4451,Garsten,AT'
-  ,@email = 'MBUKVAREVIC@GMAIL.COM'
-  ,@categories = 'Customer Services,Technical,Website,Infrastructure Support'
-  ,@phone = '06764604331'
-  ,@agent = 1
-  ,@select = 1
-GO
-EXECUTE dbo.sp_CreateUser
-   @username = 'men'
-  ,@password = 'Mensur123#'
-  ,@firstname = 'Mensur'
-  ,@lastname = 'Bukvarevic'
-  ,@salutation = 1
-  ,@address1 = 'Reslfeldtstraße 10,4451,Garsten,AT'
-  ,@email = 'MBUKVAREVIC@GMAL.COM'
-  ,@categories = 'Customer Services,Technical,Website,Infrastructure Support'
-  ,@phone = '06764604331'
-  ,@agent = 1
-  ,@select = 1
-GO
-
 -- address must contain at least 3 commas
-EXECUTE dbo.sp_CreateUser
-   @username = 'mensur480'
-  ,@password = '!'
-  ,@firstname = 'Mensur'
-  ,@lastname = 'Bukvarevic'
-  ,@salutation = 1
-  ,@address1 = 'Reslfeldtstraße 10,4451,Garsten,AT'
-  ,@email = 'MBUKVAREVIC@GMAIL.COM'
-  ,@categories = 'Customer Services,Technical,Website,Infrastructure Support'
-  ,@phone = '06764604331'
-  ,@agent = 1
-  ,@select = 1
-GO
-
-
 -- working examples
 
 EXEC sp_createUser
@@ -177,40 +90,11 @@ EXEC sp_createUser
  ,@select = 1
 GO
 
-
-
-
-select * from settings
--- LOGIN agent / staff
-
-EXEC sp_loginUser
-    'dwori10'  -- must be unique
-    ,'Pa55w.rd!!'
-    ,@agent = 1
-    ,@select = 1
-GO
-EXEC sp_loginUser 
-    'mensur480'
-    ,'Mensur123#'
-    ,@agent = 1
-    ,@select = 1
-GO
-
-
-
-
-
-
-
-
-
-
 -- CUSTOMER creation
 
 select * from customers
 select * from customer_addresses
 select * from addresses
-
 
 EXEC sp_createUser
     'customer1'  -- must be unique & must be longer than 7 characters
@@ -280,12 +164,16 @@ GO
 
 select * from customers
 
-
-
-
 -- LOGIN CUSTOMERS 
 
 select * from settings
+
+EXEC sp_loginUser
+    'customer2'  
+    ,'hallo!!!!'
+    ,@agent = 0
+    ,@select = 1
+GO
 
 EXEC sp_loginUser
     'customer2'  
@@ -294,42 +182,35 @@ EXEC sp_loginUser
     ,@select = 1
 GO
 
-
 select * from customers
-
 
 EXEC sp_unlockUser 2, @select = 1
 
 
-
-
-
---- Creation of tickets lukas
+--- Creation of tickets
 select t.id,
-t.subject,
-t.ticket_content,
-st.firstname + ' ' + st.lastname as Agent,
-tc.name as Category,
-tp.name as Priority,
-ts.name as Status,
-c.username as customer_username,
-s.name as salutation,
-c.firstname,
-c.lastname,
-t.created_at,
-t.updated_at,
-t.completed_at
-from ticket t
-inner join staff st on t.agent = st.id
-inner join customers c on t.customer_number = c.id
-inner join salutations s on c.salutation = s.id
-inner join ticket_categories tc on t.category = tc.id
-inner join ticket_priorities tp on t.priority = tp.id
-inner join ticket_statuses ts on t.status = ts.id
+    t.subject,
+    t.ticket_content,
+    st.firstname + ' ' + st.lastname as Agent,
+    tc.name as Category,
+    tp.name as Priority,
+    ts.name as Status,
+    c.username as customer_username,
+    t.created_at,
+    t.updated_at,
+    t.completed_at
+    from ticket t
+    inner join staff st on t.agent = st.id
+    inner join customers c on t.customer_number = c.id
+    inner join ticket_categories tc on t.category = tc.id
+    inner join ticket_priorities tp on t.priority = tp.id
+    inner join ticket_statuses ts on t.status = ts.id
 
+--
 select * from ticket_categories_staff
 select * from ticket_categories
 select * from staff
+select * from ticket
 
 EXEC sp_createTicket 'long loading times on website',
 'The website is teaking to long when loading on the users browser. compress pictures',
@@ -362,6 +243,7 @@ EXEC sp_createTicket 'The Backup is corrupted',
 @category = 6,
 @select = 1;
 
+-- Working examples
 EXEC sp_createTicket 'App not responding',
 'there is some major bugs in the application where the view is in the settings tab',
 @customer = 3,
@@ -375,15 +257,10 @@ EXEC sp_createTicket 'Problem with Audio',
 @category = 7,
 @select = 1;
 
-
-
 select * from ticket
 select * from staff
 
-
-
-
--- updating tickets mensur
+-- updating tickets 
 
 
 
@@ -396,16 +273,15 @@ EXEC sp_changePriority 6,3,@select = 1
 -- STATUS CHANGE
 
 SELECT * FROM ticket_statuses
-
-
-EXEC sp_changeStatus 1,3,@select = 1;
+SELECT * FROM ticket
+SELECT * FROM staff
 
 
 -- status 2
 EXEC sp_changeStatus 3,2,@select = 1
 
 
--- Status 1
+-- Status 1 wont change
 EXEC sp_changeStatus 3,1,@select = 1
 
 
@@ -414,19 +290,16 @@ EXEC sp_changeStatus 3,3,@select = 1
 
 
 SELECT * FROM ticket
-
-
-
-
-
-
+SELECT * FROM staff
 
 
 -- AGENT IS ABSENT
 -- Absence Prozedur
--- 4 Tage
-EXEC sp_absence 3,'20210106 12:30:00','20210110 12:30:00', @select = 1;
--- Ohne Ende
-EXEC sp_absence 2,'20210106 12:30:00', @select = 1;
--- Urlaub ENDE
-EXEC sp_absence 3,NULL, NULL, @select = 1;
+select * from settings
+select * from staff
+-- longer than 4 days
+EXEC sp_absence 4,'20210126 12:30:00','20210131 12:30:00', @select = 1;
+-- open end
+EXEC sp_absence 4,'20210106 12:30:00', @select = 1;
+-- cancel absence
+EXEC sp_absence 4,NULL, NULL, @select = 1;
