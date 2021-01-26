@@ -6,17 +6,6 @@ select * from ticket_categories
 
 -- STAFF / AGENT creation
 
-select * from ticket_categories_staff
-
-select * from settings
-
-select * from staff
-
-select * from customers
-
-select * from addresses
-
-
 EXECUTE dbo.sp_CreateUser
    @username = 'mensur480'
   ,@password = 'Mensur123#'
@@ -31,11 +20,17 @@ EXECUTE dbo.sp_CreateUser
   ,@select = 1
 GO
 
+select * from ticket_categories_staff
+
+select * from staff
+
+select * from addresses
+
 -- password must be long enough
 -- email must be unique and contain @ and .
 -- username must be unique and longer than 7 characters
 -- address must contain at least 3 commas
--- working examples
+
 
 EXEC sp_createUser
  'dominikk'
@@ -90,11 +85,15 @@ EXEC sp_createUser
  ,@select = 1
 GO
 
--- CUSTOMER creation
+select * from ticket_categories_staff
 
-select * from customers
-select * from customer_addresses
+select * from staff
+
 select * from addresses
+
+
+
+-- CUSTOMER creation
 
 EXEC sp_createUser
     'customer1'  -- must be unique & must be longer than 7 characters
@@ -162,9 +161,25 @@ EXEC sp_CreateUser
     ,@select = 1
 GO
 
+
 select * from customers
 
+select * from customer_addresses
+
+select * from addresses
+
+
+
 -- LOGIN CUSTOMERS 
+
+EXEC sp_loginUser
+    'mensur480'  
+    ,'Mensur123#'
+    ,@agent = 1
+    ,@select = 1
+GO
+
+select * from staff
 
 select * from settings
 
@@ -175,9 +190,11 @@ EXEC sp_loginUser
     ,@select = 1
 GO
 
-EXEC sp_loginUser
+select * from customers
+
+EXEC sp_loginUser -- 4x
     'customer2'  
-    ,'hallo!!!'
+    ,'hallo!!!' -- wrong pw
     ,@agent = 0
     ,@select = 1
 GO
@@ -186,8 +203,13 @@ select * from customers
 
 EXEC sp_unlockUser 2, @select = 1
 
+select * from customers
 
---- Creation of tickets
+
+
+
+--- CREATION OF TICKETS
+
 select t.id,
     t.subject,
     t.ticket_content,
@@ -205,12 +227,13 @@ select t.id,
     inner join ticket_categories tc on t.category = tc.id
     inner join ticket_priorities tp on t.priority = tp.id
     inner join ticket_statuses ts on t.status = ts.id
+GO
 
---
 select * from ticket_categories_staff
+
 select * from ticket_categories
+
 select * from staff
-select * from ticket
 
 EXEC sp_createTicket 'long loading times on website',
 'The website is teaking to long when loading on the users browser. compress pictures',
@@ -243,7 +266,6 @@ EXEC sp_createTicket 'The Backup is corrupted',
 @category = 6,
 @select = 1;
 
--- Working examples
 EXEC sp_createTicket 'App not responding',
 'there is some major bugs in the application where the view is in the settings tab',
 @customer = 3,
@@ -258,48 +280,65 @@ EXEC sp_createTicket 'Problem with Audio',
 @select = 1;
 
 select * from ticket
+
 select * from staff
 
--- updating tickets 
 
 
 
+-- UPDATING TICKETS
 -- PRIORITY CHANGE 
 
 SELECT * FROM ticket_priorities
 
 EXEC sp_changePriority 6,3,@select = 1
 
+SELECT * FROM ticket
+
+
+
 -- STATUS CHANGE
 
 SELECT * FROM ticket_statuses
-SELECT * FROM ticket
-SELECT * FROM staff
 
 
--- status 2
+-- state 2
 EXEC sp_changeStatus 3,2,@select = 1
 
 
--- Status 1 wont change
+-- State 1 (wont change)
 EXEC sp_changeStatus 3,1,@select = 1
 
 
--- Status 3
+-- State 3
 EXEC sp_changeStatus 3,3,@select = 1
 
 
 SELECT * FROM ticket
+
 SELECT * FROM staff
 
 
+
+
 -- AGENT IS ABSENT
--- Absence Prozedur
+
+
 select * from settings
+
 select * from staff
+
 -- longer than 4 days
 EXEC sp_absence 4,'20210126 12:30:00','20210131 12:30:00', @select = 1;
+
+select * from staff
+
+select * from ticket
 -- open end
 EXEC sp_absence 4,'20210106 12:30:00', @select = 1;
+
+select * from staff
 -- cancel absence
 EXEC sp_absence 4,NULL, NULL, @select = 1;
+
+select * from staff
